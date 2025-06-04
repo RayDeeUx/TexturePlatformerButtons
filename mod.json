@@ -1,0 +1,279 @@
+{
+	"geode": "4.4.0",
+	"gd": {
+		"win": "2.2074",
+		"mac": "2.2074",
+		"ios": "2.2074",
+		"android": "2.2074"
+	},
+	"id": "raydeeux.textureplatformerbuttons",
+	"name": "TexturePlatformerButtons",
+	"version": "v1.0.0",
+	"developer": "RayDeeUx",
+	"description": "Texture the platformer buttons!",
+	"repository": "https://github.com/RayDeeUx/TexturePlatformerButtons",
+	"settings": {
+		"enabled": {
+			"name": "Enabled",
+			"description": "Toggles the mod.",
+			"type": "bool",
+			"default": true
+		},
+		"configdir": {
+			"name": "Config Dir: Create your own Platformer button texture presets here!",
+			"description": "<cy>(Hopefully.)</c>\nThis setting does literally nothing new except being a button that acts as a shortcut to open the config directory for this mod (which is kind of important for making the button texture setup process less tedious, because this is where you will store platformer button texture presets), because the legendary developers in the Geode Team themselves forgot to add a shortcut button that would have done this exact same thing, and I have gotten far too many folks (rightfully) asking me to find the config directory when using some of my other mods, and I hate repeating the same things over and over again, and I don't know if the next major update for Geode will also repeat this mistake where HJfod forgets to include a config directory shortcut button, so this setting and this button are here for extra insurance, so please enjoy this extra button, I guess. Anyway, by the time you're finished reading this, your device should be finished with opening the config directory; press \"Aight\" to close this window.",
+			"type": "custom:configdir"
+		},
+		"p1-jump-settings": {
+			"name": "P1 Jump Button Settings",
+			"type": "title"
+		},
+		"jumpMainTextureP1": {
+			"name": "P1 Jump Main Texture",
+			"description": "Choose a PNG file for the P1 jump button texture.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
+			"type": "file",
+			"default": "",
+			"filters": [
+				{
+					"files": [ "*.png" ],
+					"description": "Image files"
+				}
+			]
+		},
+		"disableTintingP1Jump": {
+			"name": "Disable P1 Jump Button Tinting When Pressed",
+			"type": "bool",
+			"default": false
+		},
+		"textureP1JumpWhenPressed": {
+			"name": "Apply Custom Texture When P1 Jump Pressed",
+			"description": "If this is disabled, the button will simply be tinted.",
+			"type": "bool",
+			"default": true
+		},
+		"jumpPressedTextureP1": {
+			"name": "P1 Jump Pressed Texture",
+			"description": "Choose a PNG file for the P1 jump button texture when it is pressed.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
+			"type": "file",
+			"default": "",
+			"filters": [
+				{
+					"files": [ "*.png" ],
+					"description": "Image files"
+				}
+			]
+		},
+		"p2-jump-settings": {
+			"name": "P2 Jump Button Settings",
+			"type": "title"
+		},
+		"jumpMainTextureP2": {
+			"name": "P2 Jump Main Texture",
+			"description": "Choose a PNG file for the P2 jump button texture.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
+			"type": "file",
+			"default": "",
+			"filters": [
+				{
+					"files": [ "*.png" ],
+					"description": "Image files"
+				}
+			]
+		},
+		"disableTintingP2Jump": {
+			"name": "Disable P2 Jump Button Tinting When Pressed",
+			"type": "bool",
+			"default": false
+		},
+		"textureP2JumpWhenPressed": {
+			"name": "Apply Custom Texture When P2 Jump Pressed",
+			"description": "If this is disabled, the button will simply be tinted.",
+			"type": "bool",
+			"default": true
+		},
+		"jumpPressedTextureP2": {
+			"name": "P2 Jump Pressed Texture",
+			"description": "Choose a PNG file for the P2 jump button texture when it is pressed.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
+			"type": "file",
+			"default": "",
+			"filters": [
+				{
+					"files": [ "*.png" ],
+					"description": "Image files"
+				}
+			]
+		},
+		"p1-left-settings": {
+			"name": "P1 Left Button Settings",
+			"type": "title"
+		},
+		"leftMainTextureP1": {
+			"name": "P1 Left Main Texture",
+			"description": "Choose a PNG file for the P1 left button texture.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
+			"type": "file",
+			"default": "",
+			"filters": [
+				{
+					"files": [ "*.png" ],
+					"description": "Image files"
+				}
+			]
+		},
+		"disableTintingP1Left": {
+			"name": "Disable P1 Left Button Tinting When Pressed",
+			"type": "bool",
+			"default": false
+		},
+		"textureP1LeftWhenPressed": {
+			"name": "Apply Custom Texture When P1 Left Pressed",
+			"description": "If this is disabled, the button will simply be tinted.",
+			"type": "bool",
+			"default": true
+		},
+		"leftPressedTextureP1": {
+			"name": "P1 Left Pressed Texture",
+			"description": "Choose a PNG file for the P1 left button texture when it is pressed.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
+			"type": "file",
+			"default": "",
+			"filters": [
+				{
+					"files": [ "*.png" ],
+					"description": "Image files"
+				}
+			]
+		},
+		"p2-left-settings": {
+			"name": "P2 Left Button Settings",
+			"type": "title"
+		},
+		"leftMainTextureP2": {
+			"name": "P2 Left Main Texture",
+			"description": "Choose a PNG file for the P2 left button texture.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
+			"type": "file",
+			"default": "",
+			"filters": [
+				{
+					"files": [ "*.png" ],
+					"description": "Image files"
+				}
+			]
+		},
+		"disableTintingP2Left": {
+			"name": "Disable P2 Left Button Tinting When Pressed",
+			"type": "bool",
+			"default": false
+		},
+		"textureP2LeftWhenPressed": {
+			"name": "Apply Custom Texture When P2 Left Pressed",
+			"description": "If this is disabled, the button will simply be tinted.",
+			"type": "bool",
+			"default": true
+		},
+		"leftPressedTextureP2": {
+			"name": "P2 Left Pressed Texture",
+			"description": "Choose a PNG file for the P2 left button texture when it is pressed.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
+			"type": "file",
+			"default": "",
+			"filters": [
+				{
+					"files": [ "*.png" ],
+					"description": "Image files"
+				}
+			]
+		},
+		"p1-right-settings": {
+			"name": "P1 Right Button Settings",
+			"type": "title"
+		},
+		"rightMainTextureP1": {
+			"name": "P1 Right Main Texture",
+			"description": "Choose a PNG file for the P1 right button texture.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
+			"type": "file",
+			"default": "",
+			"filters": [
+				{
+					"files": [ "*.png" ],
+					"description": "Image files"
+				}
+			]
+		},
+		"disableTintingP1Right": {
+			"name": "Disable P1 Right Button Tinting When Pressed",
+			"type": "bool",
+			"default": false
+		},
+		"textureP1RightWhenPressed": {
+			"name": "Apply Custom Texture When P1 Right Pressed",
+			"description": "If this is disabled, the button will simply be tinted.",
+			"type": "bool",
+			"default": true
+		},
+		"rightPressedTextureP1": {
+			"name": "P1 Right Pressed Texture",
+			"description": "Choose a PNG file for the P1 right button texture when it is pressed.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
+			"type": "file",
+			"default": "",
+			"filters": [
+				{
+					"files": [ "*.png" ],
+					"description": "Image files"
+				}
+			]
+		},
+		"p2-right-settings": {
+			"name": "P2 Right Button Settings",
+			"type": "title"
+		},
+		"rightMainTextureP2": {
+			"name": "P2 Right Main Texture",
+			"description": "Choose a PNG file for the P2 right button texture.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
+			"type": "file",
+			"default": "",
+			"filters": [
+				{
+					"files": [ "*.png" ],
+					"description": "Image files"
+				}
+			]
+		},
+		"disableTintingP2Right": {
+			"name": "Disable P2 Right Button Tinting When Pressed",
+			"type": "bool",
+			"default": false
+		},
+		"textureP2RightWhenPressed": {
+			"name": "Apply Custom Texture When P2 Right Pressed",
+			"description": "If this is disabled, the button will simply be tinted.",
+			"type": "bool",
+			"default": true
+		},
+		"rightPressedTextureP2": {
+			"name": "P2 Right Pressed Texture",
+			"description": "Choose a PNG file for the P2 right button texture when it is pressed.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
+			"type": "file",
+			"default": "",
+			"filters": [
+				{
+					"files": [ "*.png" ],
+					"description": "Image files"
+				}
+			]
+		},
+		"advanced-header": {
+			"name": "Advanced Settings",
+			"type": "title"
+		},
+		"logging": {
+			"name": "Logging",
+			"type": "bool",
+			"default": false
+		}
+	},
+	"issues": {
+		"url": "https://discord.com/channels/911701438269386882/1205523212444639292",
+		"info": "Ping me <cl>(@erymanthus)</c> in the Geode SDK Discord server's <cl>#help</c> channel if you need help. <cr>DMs are NOT accepted.</c>"
+	},
+	"links": {
+		"community": "https://discord.gg/WqZBYdBWZW",
+		"homepage": "https://discord.com/channels/822510988409831486/1206371881222144020"
+	}
+}
