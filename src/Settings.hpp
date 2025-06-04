@@ -58,7 +58,7 @@ public:
 			"Aight"
 		)->show();
 		#else
-		SHOW_HEADS_UP_WARNING
+		SHOW_HEADS_UP_WARNING;
 		#endif
 	}
 	bool init(std::shared_ptr<MyButtonSettingV3> setting, float width) {
