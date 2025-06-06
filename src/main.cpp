@@ -133,6 +133,8 @@ class $modify(MyUILayer, UILayer) {
 	static void addTexturesToButton(CCSprite* originalSprite, CCSprite* replacementSprite, const std::string& nodeID, const bool disableTinting) {
 		if (!originalSprite || !replacementSprite) return log::info("[NULLPTR]: !originalSprite: {} | !replacementSprite: {}", !originalSprite, !replacementSprite);
 
+		const GLubyte originalOpacity = originalSprite->getOpacity();
+
 		originalSprite->setCascadeColorEnabled(!disableTinting);
 		originalSprite->setCascadeOpacityEnabled(false);
 		originalSprite->setOpacity(0);
@@ -152,7 +154,7 @@ class $modify(MyUILayer, UILayer) {
 		if (!isPressedSprite) return;
 
 		replacementSprite->setVisible(false);
-		if (!originalSprite->getChildByTag(6012025)) originalSprite->setOpacity(255);
+		if (!originalSprite->getChildByTag(6012025)) originalSprite->setOpacity(originalOpacity);
 	}
 
 	bool processUINodeTouch(GJUITouchEvent touchEvent, int p1, cocos2d::CCPoint point, GJUINode* node) {

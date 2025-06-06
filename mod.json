@@ -24,84 +24,6 @@
 			"description": "<cy>(Hopefully.)</c>\nThis setting does literally nothing new except being a button that acts as a shortcut to open the config directory for this mod (which is kind of important for making the button texture setup process less tedious, because this is where you will store platformer button texture presets), because the legendary developers in the Geode Team themselves forgot to add a shortcut button that would have done this exact same thing, and I have gotten far too many folks (rightfully) asking me to find the config directory when using some of my other mods, and I hate repeating the same things over and over again, and I don't know if the next major update for Geode will also repeat this mistake where HJfod forgets to include a config directory shortcut button, so this setting and this button are here for extra insurance, so please enjoy this extra button, I guess. Anyway, by the time you're finished reading this, your device should be finished with opening the config directory; press \"Aight\" to close this window.",
 			"type": "custom:configdir"
 		},
-		"p1-jump-settings": {
-			"name": "P1 Jump Button Settings",
-			"type": "title"
-		},
-		"jumpMainTextureP1": {
-			"name": "P1 Jump Main Texture",
-			"description": "Choose a PNG file for the P1 jump button texture.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
-			"type": "file",
-			"default": "",
-			"filters": [
-				{
-					"files": [ "*.png" ],
-					"description": "Image files"
-				}
-			]
-		},
-		"disableTintingP1Jump": {
-			"name": "Disable P1 Jump Button Tinting When Pressed",
-			"type": "bool",
-			"default": false
-		},
-		"textureP1JumpWhenPressed": {
-			"name": "Apply Custom Texture When P1 Jump Pressed",
-			"description": "If this is disabled, the button will simply be tinted.",
-			"type": "bool",
-			"default": true
-		},
-		"jumpPressedTextureP1": {
-			"name": "P1 Jump Pressed Texture",
-			"description": "Choose a PNG file for the P1 jump button texture when it is pressed.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
-			"type": "file",
-			"default": "",
-			"filters": [
-				{
-					"files": [ "*.png" ],
-					"description": "Image files"
-				}
-			]
-		},
-		"p2-jump-settings": {
-			"name": "P2 Jump Button Settings",
-			"type": "title"
-		},
-		"jumpMainTextureP2": {
-			"name": "P2 Jump Main Texture",
-			"description": "Choose a PNG file for the P2 jump button texture.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
-			"type": "file",
-			"default": "",
-			"filters": [
-				{
-					"files": [ "*.png" ],
-					"description": "Image files"
-				}
-			]
-		},
-		"disableTintingP2Jump": {
-			"name": "Disable P2 Jump Button Tinting When Pressed",
-			"type": "bool",
-			"default": false
-		},
-		"textureP2JumpWhenPressed": {
-			"name": "Apply Custom Texture When P2 Jump Pressed",
-			"description": "If this is disabled, the button will simply be tinted.",
-			"type": "bool",
-			"default": true
-		},
-		"jumpPressedTextureP2": {
-			"name": "P2 Jump Pressed Texture",
-			"description": "Choose a PNG file for the P2 jump button texture when it is pressed.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
-			"type": "file",
-			"default": "",
-			"filters": [
-				{
-					"files": [ "*.png" ],
-					"description": "Image files"
-				}
-			]
-		},
 		"p1-left-settings": {
 			"name": "P1 Left Button Settings",
 			"type": "title"
@@ -132,45 +54,6 @@
 		"leftPressedTextureP1": {
 			"name": "P1 Left Pressed Texture",
 			"description": "Choose a PNG file for the P1 left button texture when it is pressed.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
-			"type": "file",
-			"default": "",
-			"filters": [
-				{
-					"files": [ "*.png" ],
-					"description": "Image files"
-				}
-			]
-		},
-		"p2-left-settings": {
-			"name": "P2 Left Button Settings",
-			"type": "title"
-		},
-		"leftMainTextureP2": {
-			"name": "P2 Left Main Texture",
-			"description": "Choose a PNG file for the P2 left button texture.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
-			"type": "file",
-			"default": "",
-			"filters": [
-				{
-					"files": [ "*.png" ],
-					"description": "Image files"
-				}
-			]
-		},
-		"disableTintingP2Left": {
-			"name": "Disable P2 Left Button Tinting When Pressed",
-			"type": "bool",
-			"default": false
-		},
-		"textureP2LeftWhenPressed": {
-			"name": "Apply Custom Texture When P2 Left Pressed",
-			"description": "If this is disabled, the button will simply be tinted.",
-			"type": "bool",
-			"default": true
-		},
-		"leftPressedTextureP2": {
-			"name": "P2 Left Pressed Texture",
-			"description": "Choose a PNG file for the P2 left button texture when it is pressed.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
 			"type": "file",
 			"default": "",
 			"filters": [
@@ -219,51 +102,12 @@
 				}
 			]
 		},
-		"p2-right-settings": {
-			"name": "P2 Right Button Settings",
-			"type": "title"
-		},
-		"rightMainTextureP2": {
-			"name": "P2 Right Main Texture",
-			"description": "Choose a PNG file for the P2 right button texture.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
-			"type": "file",
-			"default": "",
-			"filters": [
-				{
-					"files": [ "*.png" ],
-					"description": "Image files"
-				}
-			]
-		},
-		"disableTintingP2Right": {
-			"name": "Disable P2 Right Button Tinting When Pressed",
-			"type": "bool",
-			"default": false
-		},
-		"textureP2RightWhenPressed": {
-			"name": "Apply Custom Texture When P2 Right Pressed",
-			"description": "If this is disabled, the button will simply be tinted.",
-			"type": "bool",
-			"default": true
-		},
-		"rightPressedTextureP2": {
-			"name": "P2 Right Pressed Texture",
-			"description": "Choose a PNG file for the P2 right button texture when it is pressed.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
-			"type": "file",
-			"default": "",
-			"filters": [
-				{
-					"files": [ "*.png" ],
-					"description": "Image files"
-				}
-			]
-		},
 		"p1-jump-two-player-settings": {
-			"name": "P1 Jump Button Settings (Two Player Mode)",
+			"name": "P1 Jump Button Settings (2-Player Mode)",
 			"type": "title"
 		},
 		"jumpMainTextureP1TwoPlayer": {
-			"name": "P1 Jump Main Texture (Two Player Mode)",
+			"name": "P1 Jump Main Texture (2-Player Mode)",
 			"description": "Choose a PNG file for the P1 jump button texture in two-player mode.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
 			"type": "file",
 			"default": "",
@@ -275,18 +119,18 @@
 			]
 		},
 		"disableTintingP1JumpTwoPlayer": {
-			"name": "Disable P1 Jump Button Tinting When Pressed (Two Player Mode)",
+			"name": "Disable P1 Jump Button Tinting When Pressed (2-Player Mode)",
 			"type": "bool",
 			"default": false
 		},
 		"textureP1JumpWhenPressedTwoPlayer": {
-			"name": "Apply Custom Texture When P1 Jump Pressed (Two Player Mode)",
+			"name": "Apply Custom Texture When P1 Jump Pressed (2-Player Mode)",
 			"description": "If this is disabled, the button will simply be tinted in two-player mode.",
 			"type": "bool",
 			"default": true
 		},
 		"jumpPressedTextureP1TwoPlayer": {
-			"name": "P1 Jump Pressed Texture (Two Player Mode)",
+			"name": "P1 Jump Pressed Texture (2-Player Mode)",
 			"description": "Choose a PNG file for the P1 jump button texture when it is pressed in two-player mode.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
 			"type": "file",
 			"default": "",
@@ -298,11 +142,11 @@
 			]
 		},
 		"p2-jump-two-player-settings": {
-			"name": "P2 Jump Button Settings (Two Player Mode)",
+			"name": "P2 Jump Button Settings (2-Player Mode)",
 			"type": "title"
 		},
 		"jumpMainTextureP2TwoPlayer": {
-			"name": "P2 Jump Main Texture (Two Player Mode)",
+			"name": "P2 Jump Main Texture (2-Player Mode)",
 			"description": "Choose a PNG file for the P2 jump button texture in two-player mode.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
 			"type": "file",
 			"default": "",
@@ -314,18 +158,18 @@
 			]
 		},
 		"disableTintingP2JumpTwoPlayer": {
-			"name": "Disable P2 Jump Button Tinting When Pressed (Two Player Mode)",
+			"name": "Disable P2 Jump Button Tinting When Pressed (2-Player Mode)",
 			"type": "bool",
 			"default": false
 		},
 		"textureP2JumpWhenPressedTwoPlayer": {
-			"name": "Apply Custom Texture When P2 Jump Pressed (Two Player Mode)",
+			"name": "Apply Custom Texture When P2 Jump Pressed (2-Player Mode)",
 			"description": "If this is disabled, the button will simply be tinted in two-player mode.",
 			"type": "bool",
 			"default": true
 		},
 		"jumpPressedTextureP2TwoPlayer": {
-			"name": "P2 Jump Pressed Texture (Two Player Mode)",
+			"name": "P2 Jump Pressed Texture (2-Player Mode)",
 			"description": "Choose a PNG file for the P2 jump button texture when it is pressed in two-player mode.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
 			"type": "file",
 			"default": "",
@@ -337,11 +181,11 @@
 			]
 		},
 		"p1-left-two-player-settings": {
-			"name": "P1 Left Button Settings (Two Player Mode)",
+			"name": "P1 Left Button Settings (2-Player Mode)",
 			"type": "title"
 		},
 		"leftMainTextureP1TwoPlayer": {
-			"name": "P1 Left Main Texture (Two Player Mode)",
+			"name": "P1 Left Main Texture (2-Player Mode)",
 			"description": "Choose a PNG file for the P1 left button texture in two-player mode.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
 			"type": "file",
 			"default": "",
@@ -353,18 +197,18 @@
 			]
 		},
 		"disableTintingP1LeftTwoPlayer": {
-			"name": "Disable P1 Left Button Tinting When Pressed (Two Player Mode)",
+			"name": "Disable P1 Left Button Tinting When Pressed (2-Player Mode)",
 			"type": "bool",
 			"default": false
 		},
 		"textureP1LeftWhenPressedTwoPlayer": {
-			"name": "Apply Custom Texture When P1 Left Pressed (Two Player Mode)",
+			"name": "Apply Custom Texture When P1 Left Pressed (2-Player Mode)",
 			"description": "If this is disabled, the button will simply be tinted in two-player mode.",
 			"type": "bool",
 			"default": true
 		},
 		"leftPressedTextureP1TwoPlayer": {
-			"name": "P1 Left Pressed Texture (Two Player Mode)",
+			"name": "P1 Left Pressed Texture (2-Player Mode)",
 			"description": "Choose a PNG file for the P1 left button texture when it is pressed in two-player mode.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
 			"type": "file",
 			"default": "",
@@ -376,11 +220,11 @@
 			]
 		},
 		"p2-left-two-player-settings": {
-			"name": "P2 Left Button Settings (Two Player Mode)",
+			"name": "P2 Left Button Settings (2-Player Mode)",
 			"type": "title"
 		},
 		"leftMainTextureP2TwoPlayer": {
-			"name": "P2 Left Main Texture (Two Player Mode)",
+			"name": "P2 Left Main Texture (2-Player Mode)",
 			"description": "Choose a PNG file for the P2 left button texture in two-player mode.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
 			"type": "file",
 			"default": "",
@@ -392,18 +236,18 @@
 			]
 		},
 		"disableTintingP2LeftTwoPlayer": {
-			"name": "Disable P2 Left Button Tinting When Pressed (Two Player Mode)",
+			"name": "Disable P2 Left Button Tinting When Pressed (2-Player Mode)",
 			"type": "bool",
 			"default": false
 		},
 		"textureP2LeftWhenPressedTwoPlayer": {
-			"name": "Apply Custom Texture When P2 Left Pressed (Two Player Mode)",
+			"name": "Apply Custom Texture When P2 Left Pressed (2-Player Mode)",
 			"description": "If this is disabled, the button will simply be tinted in two-player mode.",
 			"type": "bool",
 			"default": true
 		},
 		"leftPressedTextureP2TwoPlayer": {
-			"name": "P2 Left Pressed Texture (Two Player Mode)",
+			"name": "P2 Left Pressed Texture (2-Player Mode)",
 			"description": "Choose a PNG file for the P2 left button texture when it is pressed in two-player mode.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
 			"type": "file",
 			"default": "",
@@ -415,11 +259,11 @@
 			]
 		},
 		"p1-right-two-player-settings": {
-			"name": "P1 Right Button Settings (Two Player Mode)",
+			"name": "P1 Right Button Settings (2-Player Mode)",
 			"type": "title"
 		},
 		"rightMainTextureP1TwoPlayer": {
-			"name": "P1 Right Main Texture (Two Player Mode)",
+			"name": "P1 Right Main Texture (2-Player Mode)",
 			"description": "Choose a PNG file for the P1 right button texture in two-player mode.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
 			"type": "file",
 			"default": "",
@@ -431,18 +275,18 @@
 			]
 		},
 		"disableTintingP1RightTwoPlayer": {
-			"name": "Disable P1 Right Button Tinting When Pressed (Two Player Mode)",
+			"name": "Disable P1 Right Button Tinting When Pressed (2-Player Mode)",
 			"type": "bool",
 			"default": false
 		},
 		"textureP1RightWhenPressedTwoPlayer": {
-			"name": "Apply Custom Texture When P1 Right Pressed (Two Player Mode)",
+			"name": "Apply Custom Texture When P1 Right Pressed (2-Player Mode)",
 			"description": "If this is disabled, the button will simply be tinted in two-player mode.",
 			"type": "bool",
 			"default": true
 		},
 		"rightPressedTextureP1TwoPlayer": {
-			"name": "P1 Right Pressed Texture (Two Player Mode)",
+			"name": "P1 Right Pressed Texture (2-Player Mode)",
 			"description": "Choose a PNG file for the P1 right button texture when it is pressed in two-player mode.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
 			"type": "file",
 			"default": "",
@@ -454,11 +298,11 @@
 			]
 		},
 		"p2-right-two-player-settings": {
-			"name": "P2 Right Button Settings (Two Player Mode)",
+			"name": "P2 Right Button Settings (2-Player Mode)",
 			"type": "title"
 		},
 		"rightMainTextureP2TwoPlayer": {
-			"name": "P2 Right Main Texture (Two Player Mode)",
+			"name": "P2 Right Main Texture (2-Player Mode)",
 			"description": "Choose a PNG file for the P2 right button texture in two-player mode.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
 			"type": "file",
 			"default": "",
@@ -470,18 +314,18 @@
 			]
 		},
 		"disableTintingP2RightTwoPlayer": {
-			"name": "Disable P2 Right Button Tinting When Pressed (Two Player Mode)",
+			"name": "Disable P2 Right Button Tinting When Pressed (2-Player Mode)",
 			"type": "bool",
 			"default": false
 		},
 		"textureP2RightWhenPressedTwoPlayer": {
-			"name": "Apply Custom Texture When P2 Right Pressed (Two Player Mode)",
+			"name": "Apply Custom Texture When P2 Right Pressed (2-Player Mode)",
 			"description": "If this is disabled, the button will simply be tinted in two-player mode.",
 			"type": "bool",
 			"default": true
 		},
 		"rightPressedTextureP2TwoPlayer": {
-			"name": "P2 Right Pressed Texture (Two Player Mode)",
+			"name": "P2 Right Pressed Texture (2-Player Mode)",
 			"description": "Choose a PNG file for the P2 right button texture when it is pressed in two-player mode.\n# <c-ff0000>***__ONLY PNG FILES ARE ALLOWED.__***</c>",
 			"type": "file",
 			"default": "",
