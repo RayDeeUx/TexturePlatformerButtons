@@ -42,6 +42,7 @@
 		},
 		"disableTintingP1Left": {
 			"name": "Disable P1 Left Button Tinting When Pressed",
+			"description": "Due to technical limitations, this setting does <c_>***__NOT__***</c> apply to the original button texture; it will still tint if it is visible while being pressed.",
 			"type": "bool",
 			"default": false
 		},
@@ -81,6 +82,7 @@
 		},
 		"disableTintingP1Right": {
 			"name": "Disable P1 Right Button Tinting When Pressed",
+			"description": "Due to technical limitations, this setting does <c_>***__NOT__***</c> apply to the original button texture; it will still tint if it is visible while being pressed.",
 			"type": "bool",
 			"default": false
 		},
@@ -120,6 +122,7 @@
 		},
 		"disableTintingP1JumpTwoPlayer": {
 			"name": "Disable P1 Jump Button Tinting When Pressed (2-Player Mode)",
+			"description": "Due to technical limitations, this setting does <c_>***__NOT__***</c> apply to the original button texture; it will still tint if it is visible while being pressed.",
 			"type": "bool",
 			"default": false
 		},
@@ -159,6 +162,7 @@
 		},
 		"disableTintingP2JumpTwoPlayer": {
 			"name": "Disable P2 Jump Button Tinting When Pressed (2-Player Mode)",
+			"description": "Due to technical limitations, this setting does <c_>***__NOT__***</c> apply to the original button texture; it will still tint if it is visible while being pressed.",
 			"type": "bool",
 			"default": false
 		},
@@ -198,6 +202,7 @@
 		},
 		"disableTintingP1LeftTwoPlayer": {
 			"name": "Disable P1 Left Button Tinting When Pressed (2-Player Mode)",
+			"description": "Due to technical limitations, this setting does <c_>***__NOT__***</c> apply to the original button texture; it will still tint if it is visible while being pressed.",
 			"type": "bool",
 			"default": false
 		},
@@ -237,6 +242,7 @@
 		},
 		"disableTintingP2LeftTwoPlayer": {
 			"name": "Disable P2 Left Button Tinting When Pressed (2-Player Mode)",
+			"description": "Due to technical limitations, this setting does <c_>***__NOT__***</c> apply to the original button texture; it will still tint if it is visible while being pressed.",
 			"type": "bool",
 			"default": false
 		},
@@ -276,6 +282,7 @@
 		},
 		"disableTintingP1RightTwoPlayer": {
 			"name": "Disable P1 Right Button Tinting When Pressed (2-Player Mode)",
+			"description": "Due to technical limitations, this setting does <c_>***__NOT__***</c> apply to the original button texture; it will still tint if it is visible while being pressed.",
 			"type": "bool",
 			"default": false
 		},
@@ -315,6 +322,7 @@
 		},
 		"disableTintingP2RightTwoPlayer": {
 			"name": "Disable P2 Right Button Tinting When Pressed (2-Player Mode)",
+			"description": "Due to technical limitations, this setting does <c_>***__NOT__***</c> apply to the original button texture; it will still tint if it is visible while being pressed.",
 			"type": "bool",
 			"default": false
 		},
