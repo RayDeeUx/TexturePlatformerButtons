@@ -46,14 +46,14 @@ class $modify(MyUILayer, UILayer) {
 
 		const bool is2P = m_gameLayer->m_level->m_twoPlayerMode;
 
-		CCSprite* p1JumpSprite = CCSprite::create(manager->jumpMainTextureP1.c_str());
-		if (manager->textureP1JumpWhenPressed) p1JumpPressedSprite = CCSprite::create(manager->jumpPressedTextureP1.c_str());
+		CCSprite* p1JumpSprite = CCSprite::create(is2P ? manager->jumpMainTextureP1TwoPlayer.c_str() : manager->jumpMainTextureP1.c_str());
+		if (manager->textureP1JumpWhenPressed) p1JumpPressedSprite = CCSprite::create(is2P ? manager->jumpPressedTextureP1TwoPlayer.c_str() : manager->jumpPressedTextureP1.c_str());
 
-		CCSprite* p1LeftSprite = CCSprite::create(manager->leftMainTextureP1.c_str());
-		if (manager->textureP1LeftWhenPressed) p1LeftPressedSprite = CCSprite::create(manager->leftPressedTextureP1.c_str());
+		CCSprite* p1LeftSprite = CCSprite::create(is2P ? manager->leftMainTextureP1TwoPlayer.c_str() : manager->leftMainTextureP1.c_str());
+		if (manager->textureP1LeftWhenPressed) p1LeftPressedSprite = CCSprite::create(is2P ? manager->leftPressedTextureP1TwoPlayer.c_str() : manager->leftPressedTextureP1.c_str());
 
-		CCSprite* p1RightSprite = CCSprite::create(manager->rightMainTextureP1.c_str());
-		if (manager->textureP1RightWhenPressed) p1RightPressedSprite = CCSprite::create(manager->rightPressedTextureP1.c_str());
+		CCSprite* p1RightSprite = CCSprite::create(is2P ? manager->rightMainTextureP1TwoPlayer.c_str() : manager->rightMainTextureP1.c_str());
+		if (manager->textureP1RightWhenPressed) p1RightPressedSprite = CCSprite::create(is2P ? manager->rightPressedTextureP1TwoPlayer.c_str() : manager->rightPressedTextureP1.c_str());
 
 		const bool jP1Valid = p1JumpSprite && !p1JumpSprite->getUserObject("geode.texture-loader/fallback");
 		const bool lP1Valid = p1LeftSprite && !p1LeftSprite->getUserObject("geode.texture-loader/fallback");
@@ -63,14 +63,14 @@ class $modify(MyUILayer, UILayer) {
 		const bool lP1PressedValid = p1LeftPressedSprite && !p1LeftPressedSprite->getUserObject("geode.texture-loader/fallback");
 		const bool rP1PressedValid = p1RightPressedSprite && !p1RightPressedSprite->getUserObject("geode.texture-loader/fallback");
 
-		CCSprite* p2JumpSprite = CCSprite::create(manager->jumpMainTextureP2.c_str());
-		if (manager->textureP2JumpWhenPressed) p2JumpPressedSprite = CCSprite::create(manager->jumpPressedTextureP2.c_str());
+		CCSprite* p2JumpSprite = CCSprite::create(is2P ? manager->jumpMainTextureP2TwoPlayer.c_str() : manager->jumpMainTextureP2.c_str());
+		if (manager->textureP2JumpWhenPressed) p2JumpPressedSprite = CCSprite::create(is2P ? manager->jumpPressedTextureP2TwoPlayer.c_str() : manager->jumpPressedTextureP2.c_str());
 
-		CCSprite* p2LeftSprite = CCSprite::create(manager->leftMainTextureP2.c_str());
-		if (manager->textureP2LeftWhenPressed) p2LeftPressedSprite = CCSprite::create(manager->leftPressedTextureP2.c_str());
+		CCSprite* p2LeftSprite = CCSprite::create(is2P ? manager->leftMainTextureP2TwoPlayer.c_str() : manager->leftMainTextureP2.c_str());
+		if (manager->textureP2LeftWhenPressed) p2LeftPressedSprite = CCSprite::create(is2P ? manager->leftPressedTextureP2TwoPlayer.c_str() : manager->leftPressedTextureP2.c_str());
 
-		CCSprite* p2RightSprite = CCSprite::create(manager->rightMainTextureP2.c_str());
-		if (manager->textureP2RightWhenPressed) p2RightPressedSprite = CCSprite::create(manager->rightPressedTextureP2.c_str());
+		CCSprite* p2RightSprite = CCSprite::create(is2P ? manager->rightMainTextureP2TwoPlayer.c_str() : manager->rightMainTextureP2.c_str());
+		if (manager->textureP2RightWhenPressed) p2RightPressedSprite = CCSprite::create(is2P ? manager->rightPressedTextureP2TwoPlayer.c_str() : manager->rightPressedTextureP2.c_str());
 
 		const bool jP2Valid = p2JumpSprite && !p2JumpSprite->getUserObject("geode.texture-loader/fallback");
 		const bool lP2Valid = p2LeftSprite && !p2LeftSprite->getUserObject("geode.texture-loader/fallback");
@@ -91,42 +91,42 @@ class $modify(MyUILayer, UILayer) {
 			const auto leftButton = typeinfo_cast<CCSprite*>(platP1Move->getChildren()->objectAtIndex(0));
 			if (!leftButton) return log::info("[NULLPTR] AT leftButton! just before checking lP1Valid");
 			fields->platP1LeftOpacity = leftButton->getOpacity();
-			if (lP1Valid) MyUILayer::addTexturesToButton(leftButton, p1LeftSprite, "plat-p1-left"_spr, manager->disableTintingP1Left);
-			if (lP1PressedValid) MyUILayer::addTexturesToButton(leftButton, p1LeftPressedSprite, "plat-p1-left-pressed"_spr, manager->disableTintingP1Left);
+			if (lP1Valid) MyUILayer::addTexturesToButton(leftButton, p1LeftSprite, "plat-p1-left"_spr, is2P ? manager->disableTintingP1LeftTwoPlayer : manager->disableTintingP1Left);
+			if (lP1PressedValid) MyUILayer::addTexturesToButton(leftButton, p1LeftPressedSprite, "plat-p1-left-pressed"_spr, is2P ? manager->disableTintingP1LeftTwoPlayer : manager->disableTintingP1Left);
 
 			const auto rightButton = typeinfo_cast<CCSprite*>(platP1Move->getChildren()->objectAtIndex(1));
 			if (!rightButton) return log::info("[NULLPTR] AT rightButton! just before checking rP1Valid");
 			fields->platP1RightOpacity = rightButton->getOpacity();
-			if (rP1Valid) MyUILayer::addTexturesToButton(rightButton, p1RightSprite, "plat-p1-right"_spr, manager->disableTintingP1Right);
-			if (rP1PressedValid) MyUILayer::addTexturesToButton(rightButton, p1RightPressedSprite, "plat-p1-right-pressed"_spr, manager->disableTintingP1Right);
+			if (rP1Valid) MyUILayer::addTexturesToButton(rightButton, p1RightSprite, "plat-p1-right"_spr, is2P ? manager->disableTintingP1RightTwoPlayer : manager->disableTintingP1Right);
+			if (rP1PressedValid) MyUILayer::addTexturesToButton(rightButton, p1RightPressedSprite, "plat-p1-right-pressed"_spr, is2P ? manager->disableTintingP1RightTwoPlayer : manager->disableTintingP1Right);
 		}
 		if (platP1Jump && platP1Jump->getChildrenCount() != 0) {
 			const auto jumpButton = typeinfo_cast<CCSprite*>(platP1Jump->getChildren()->objectAtIndex(0));
 			if (!jumpButton) return log::info("[NULLPTR] AT jumpButton! just before checking jP1Valid");
 			fields->platP1JumpOpacity = jumpButton->getOpacity();
-			if (jP1Valid) MyUILayer::addTexturesToButton(jumpButton, p1JumpSprite, "plat-p1-jump"_spr, manager->disableTintingP1Jump);
-			if (jP1PressedValid) MyUILayer::addTexturesToButton(jumpButton, p1JumpPressedSprite, "plat-p1-jump-pressed"_spr, manager->disableTintingP1Jump);
+			if (jP1Valid) MyUILayer::addTexturesToButton(jumpButton, p1JumpSprite, "plat-p1-jump"_spr, is2P ? manager->disableTintingP1JumpTwoPlayer : manager->disableTintingP1Jump);
+			if (jP1PressedValid) MyUILayer::addTexturesToButton(jumpButton, p1JumpPressedSprite, "plat-p1-jump-pressed"_spr, is2P ? manager->disableTintingP1JumpTwoPlayer : manager->disableTintingP1Jump);
 		}
 
 		if (platP2Move && platP2Move->getChildrenCount() > 1) {
 			const auto leftButton = typeinfo_cast<CCSprite*>(platP2Move->getChildren()->objectAtIndex(0));
 			if (!leftButton) return log::info("[NULLPTR] AT leftButton! just before checking lP2Valid");
 			fields->platP2LeftOpacity = leftButton->getOpacity();
-			if (lP2Valid) MyUILayer::addTexturesToButton(leftButton, p2LeftSprite, "plat-p2-left"_spr, manager->disableTintingP2Left);
-			if (lP2PressedValid) MyUILayer::addTexturesToButton(leftButton, p2LeftPressedSprite, "plat-p2-left-pressed"_spr, manager->disableTintingP2Left);
+			if (lP2Valid) MyUILayer::addTexturesToButton(leftButton, p2LeftSprite, "plat-p2-left"_spr, is2P ? manager->disableTintingP2LeftTwoPlayer : manager->disableTintingP2Left);
+			if (lP2PressedValid) MyUILayer::addTexturesToButton(leftButton, p2LeftPressedSprite, "plat-p2-left-pressed"_spr, is2P ? manager->disableTintingP2LeftTwoPlayer : manager->disableTintingP2Left);
 
 			const auto rightButton = typeinfo_cast<CCSprite*>(platP2Move->getChildren()->objectAtIndex(1));
 			if (!rightButton) return log::info("[NULLPTR] AT rightButton! just before checking rP2Valid");
 			fields->platP2RightOpacity = rightButton->getOpacity();
-			if (rP2Valid) MyUILayer::addTexturesToButton(rightButton, p2RightSprite, "plat-p2-right"_spr, manager->disableTintingP2Right);
-			if (rP2PressedValid) MyUILayer::addTexturesToButton(rightButton, p2RightPressedSprite, "plat-p2-right-pressed"_spr, manager->disableTintingP2Right);
+			if (rP2Valid) MyUILayer::addTexturesToButton(rightButton, p2RightSprite, "plat-p2-right"_spr, is2P ? manager->disableTintingP2RightTwoPlayer : manager->disableTintingP2Right);
+			if (rP2PressedValid) MyUILayer::addTexturesToButton(rightButton, p2RightPressedSprite, "plat-p2-right-pressed"_spr, is2P ? manager->disableTintingP2RightTwoPlayer : manager->disableTintingP2Right);
 		}
 		if (platP2Jump && platP2Jump->getChildrenCount() != 0) {
 			const auto jumpButton = typeinfo_cast<CCSprite*>(platP2Jump->getChildren()->objectAtIndex(0));
 			if (!jumpButton) return log::info("[NULLPTR] AT jumpButton! just before checking jP2Valid");
 			fields->platP2JumpOpacity = jumpButton->getOpacity();
-			if (jP2Valid) MyUILayer::addTexturesToButton(jumpButton, p2JumpSprite, "plat-p2-jump"_spr, manager->disableTintingP2Jump);
-			if (jP2PressedValid) MyUILayer::addTexturesToButton(jumpButton, p2JumpPressedSprite, "plat-p2-jump-pressed"_spr, manager->disableTintingP2Jump);
+			if (jP2Valid) MyUILayer::addTexturesToButton(jumpButton, p2JumpSprite, "plat-p2-jump"_spr, is2P ? manager->disableTintingP2JumpTwoPlayer : manager->disableTintingP2Jump);
+			if (jP2PressedValid) MyUILayer::addTexturesToButton(jumpButton, p2JumpPressedSprite, "plat-p2-jump-pressed"_spr, is2P ? manager->disableTintingP2JumpTwoPlayer : manager->disableTintingP2Jump);
 		}
 	}
 
@@ -160,7 +160,10 @@ class $modify(MyUILayer, UILayer) {
 		const Manager* manager = Manager::getSharedInstance();
 		if (!manager->enabled || !m_uiNodes || !m_gameLayer || !m_gameLayer->m_level || !m_gameLayer->m_level->isPlatformer() || !node->getChildren() || node->getChildrenCount() < 1) return result;
 
-		if (!manager->textureP1JumpWhenPressed && !manager->textureP2JumpWhenPressed && !manager->textureP1LeftWhenPressed && !manager->textureP2LeftWhenPressed && !manager->textureP1RightWhenPressed && !manager->textureP2RightWhenPressed) return result;
+		const bool is2P = m_gameLayer->m_level->m_twoPlayerMode;
+
+		if (!is2P && !manager->textureP1JumpWhenPressed && !manager->textureP2JumpWhenPressed && !manager->textureP1LeftWhenPressed && !manager->textureP2LeftWhenPressed && !manager->textureP1RightWhenPressed && !manager->textureP2RightWhenPressed) return result;
+		if (is2P && !manager->textureP1JumpWhenPressedTwoPlayer && !manager->textureP2JumpWhenPressedTwoPlayer && !manager->textureP1LeftWhenPressedTwoPlayer && !manager->textureP2LeftWhenPressedTwoPlayer && !manager->textureP1RightWhenPressedTwoPlayer && !manager->textureP2RightWhenPressedTwoPlayer) return result;
 
 		const auto platP1Move = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(0));
 		const auto platP2Move = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(1));
