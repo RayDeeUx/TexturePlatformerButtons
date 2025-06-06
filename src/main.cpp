@@ -47,13 +47,13 @@ class $modify(MyUILayer, UILayer) {
 		const bool is2P = m_gameLayer->m_level->m_twoPlayerMode;
 
 		CCSprite* p1JumpSprite = CCSprite::create(is2P ? manager->jumpMainTextureP1TwoPlayer.c_str() : manager->jumpMainTextureP1.c_str());
-		if (manager->textureP1JumpWhenPressed) p1JumpPressedSprite = CCSprite::create(is2P ? manager->jumpPressedTextureP1TwoPlayer.c_str() : manager->jumpPressedTextureP1.c_str());
+		if (is2P ? manager->textureP1JumpWhenPressedTwoPlayer : manager->textureP1JumpWhenPressed) p1JumpPressedSprite = CCSprite::create(is2P ? manager->jumpPressedTextureP1TwoPlayer.c_str() : manager->jumpPressedTextureP1.c_str());
 
 		CCSprite* p1LeftSprite = CCSprite::create(is2P ? manager->leftMainTextureP1TwoPlayer.c_str() : manager->leftMainTextureP1.c_str());
-		if (manager->textureP1LeftWhenPressed) p1LeftPressedSprite = CCSprite::create(is2P ? manager->leftPressedTextureP1TwoPlayer.c_str() : manager->leftPressedTextureP1.c_str());
+		if (is2P ? manager->textureP1LeftWhenPressedTwoPlayer : manager->textureP1LeftWhenPressed) p1LeftPressedSprite = CCSprite::create(is2P ? manager->leftPressedTextureP1TwoPlayer.c_str() : manager->leftPressedTextureP1.c_str());
 
 		CCSprite* p1RightSprite = CCSprite::create(is2P ? manager->rightMainTextureP1TwoPlayer.c_str() : manager->rightMainTextureP1.c_str());
-		if (manager->textureP1RightWhenPressed) p1RightPressedSprite = CCSprite::create(is2P ? manager->rightPressedTextureP1TwoPlayer.c_str() : manager->rightPressedTextureP1.c_str());
+		if (is2P ? manager->textureP1RightWhenPressedTwoPlayer : manager->textureP1RightWhenPressed) p1RightPressedSprite = CCSprite::create(is2P ? manager->rightPressedTextureP1TwoPlayer.c_str() : manager->rightPressedTextureP1.c_str());
 
 		const bool jP1Valid = p1JumpSprite && !p1JumpSprite->getUserObject("geode.texture-loader/fallback");
 		const bool lP1Valid = p1LeftSprite && !p1LeftSprite->getUserObject("geode.texture-loader/fallback");
@@ -64,13 +64,13 @@ class $modify(MyUILayer, UILayer) {
 		const bool rP1PressedValid = p1RightPressedSprite && !p1RightPressedSprite->getUserObject("geode.texture-loader/fallback");
 
 		CCSprite* p2JumpSprite = CCSprite::create(is2P ? manager->jumpMainTextureP2TwoPlayer.c_str() : manager->jumpMainTextureP2.c_str());
-		if (manager->textureP2JumpWhenPressed) p2JumpPressedSprite = CCSprite::create(is2P ? manager->jumpPressedTextureP2TwoPlayer.c_str() : manager->jumpPressedTextureP2.c_str());
+		if (is2P ? manager->textureP2JumpWhenPressedTwoPlayer : manager->textureP2JumpWhenPressed) p2JumpPressedSprite = CCSprite::create(is2P ? manager->jumpPressedTextureP2TwoPlayer.c_str() : manager->jumpPressedTextureP2.c_str());
 
 		CCSprite* p2LeftSprite = CCSprite::create(is2P ? manager->leftMainTextureP2TwoPlayer.c_str() : manager->leftMainTextureP2.c_str());
-		if (manager->textureP2LeftWhenPressed) p2LeftPressedSprite = CCSprite::create(is2P ? manager->leftPressedTextureP2TwoPlayer.c_str() : manager->leftPressedTextureP2.c_str());
+		if (is2P ? manager->textureP2LeftWhenPressedTwoPlayer : manager->textureP2LeftWhenPressed) p2LeftPressedSprite = CCSprite::create(is2P ? manager->leftPressedTextureP2TwoPlayer.c_str() : manager->leftPressedTextureP2.c_str());
 
 		CCSprite* p2RightSprite = CCSprite::create(is2P ? manager->rightMainTextureP2TwoPlayer.c_str() : manager->rightMainTextureP2.c_str());
-		if (manager->textureP2RightWhenPressed) p2RightPressedSprite = CCSprite::create(is2P ? manager->rightPressedTextureP2TwoPlayer.c_str() : manager->rightPressedTextureP2.c_str());
+		if (is2P ? manager->textureP2RightWhenPressedTwoPlayer : manager->textureP2RightWhenPressed) p2RightPressedSprite = CCSprite::create(is2P ? manager->rightPressedTextureP2TwoPlayer.c_str() : manager->rightPressedTextureP2.c_str());
 
 		const bool jP2Valid = p2JumpSprite && !p2JumpSprite->getUserObject("geode.texture-loader/fallback");
 		const bool lP2Valid = p2LeftSprite && !p2LeftSprite->getUserObject("geode.texture-loader/fallback");
@@ -79,6 +79,19 @@ class $modify(MyUILayer, UILayer) {
 		const bool jP2PressedValid = p2JumpPressedSprite && !p2JumpPressedSprite->getUserObject("geode.texture-loader/fallback");
 		const bool lP2PressedValid = p2LeftPressedSprite && !p2LeftPressedSprite->getUserObject("geode.texture-loader/fallback");
 		const bool rP2PressedValid = p2RightPressedSprite && !p2RightPressedSprite->getUserObject("geode.texture-loader/fallback");
+
+		log::info("jP1Valid: {}", jP1Valid);
+		log::info("lP1Valid: {}", lP1Valid);
+		log::info("rP1Valid: {}", rP1Valid);
+		log::info("jP1PressedValid: {}", jP1PressedValid);
+		log::info("lP1PressedValid: {}", lP1PressedValid);
+		log::info("rP1PressedValid: {}", rP1PressedValid);
+		log::info("jP2Valid: {}", jP2Valid);
+		log::info("lP2Valid: {}", lP2Valid);
+		log::info("rP2Valid: {}", rP2Valid);
+		log::info("jP2PressedValid: {}", jP2PressedValid);
+		log::info("lP2PressedValid: {}", lP2PressedValid);
+		log::info("rP2PressedValid: {}", rP2PressedValid);
 
 		const auto platP1Move = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(0));
 		const auto platP2Move = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(1));
