@@ -35,10 +35,6 @@ class $modify(MyUILayer, UILayer) {
 		const Manager* manager = Manager::getSharedInstance();
 		if (!manager->enabled) return;
 
-		CCSprite* p2JumpSprite = nullptr;
-		CCSprite* p2LeftSprite = nullptr;
-		CCSprite* p2RightSprite = nullptr;
-
 		CCSprite* p1JumpPressedSprite = nullptr;
 		CCSprite* p2JumpPressedSprite = nullptr;
 		CCSprite* p1LeftPressedSprite = nullptr;
@@ -48,13 +44,7 @@ class $modify(MyUILayer, UILayer) {
 
 		log::info("initalizing sprites !!!");
 
-		bool jP2Valid = false;
-		bool lP2Valid = false;
-		bool rP2Valid = false;
-
-		bool jP2PressedValid = false;
-		bool lP2PressedValid = false;
-		bool rP2PressedValid = false;
+		const bool is2P = m_gameLayer->m_level->m_twoPlayerMode;
 
 		CCSprite* p1JumpSprite = CCSprite::create(manager->jumpMainTextureP1.c_str());
 		if (manager->textureP1JumpWhenPressed) p1JumpPressedSprite = CCSprite::create(manager->jumpPressedTextureP1.c_str());
@@ -73,24 +63,22 @@ class $modify(MyUILayer, UILayer) {
 		const bool lP1PressedValid = p1LeftPressedSprite && !p1LeftPressedSprite->getUserObject("geode.texture-loader/fallback");
 		const bool rP1PressedValid = p1RightPressedSprite && !p1RightPressedSprite->getUserObject("geode.texture-loader/fallback");
 
-		if (m_gameLayer->m_level->m_twoPlayerMode) {
-			p2JumpSprite = CCSprite::create(manager->jumpMainTextureP2.c_str());
-			if (manager->textureP2JumpWhenPressed) p2JumpPressedSprite = CCSprite::create(manager->jumpPressedTextureP2.c_str());
+		CCSprite* p2JumpSprite = CCSprite::create(manager->jumpMainTextureP2.c_str());
+		if (manager->textureP2JumpWhenPressed) p2JumpPressedSprite = CCSprite::create(manager->jumpPressedTextureP2.c_str());
 
-			p2LeftSprite = CCSprite::create(manager->leftMainTextureP2.c_str());
-			if (manager->textureP2LeftWhenPressed) p2LeftPressedSprite = CCSprite::create(manager->leftPressedTextureP2.c_str());
+		CCSprite* p2LeftSprite = CCSprite::create(manager->leftMainTextureP2.c_str());
+		if (manager->textureP2LeftWhenPressed) p2LeftPressedSprite = CCSprite::create(manager->leftPressedTextureP2.c_str());
 
-			p2RightSprite = CCSprite::create(manager->rightMainTextureP2.c_str());
-			if (manager->textureP2RightWhenPressed) p2RightPressedSprite = CCSprite::create(manager->rightPressedTextureP2.c_str());
+		CCSprite* p2RightSprite = CCSprite::create(manager->rightMainTextureP2.c_str());
+		if (manager->textureP2RightWhenPressed) p2RightPressedSprite = CCSprite::create(manager->rightPressedTextureP2.c_str());
 
-			jP2Valid = p2JumpSprite && !p2JumpSprite->getUserObject("geode.texture-loader/fallback");
-			lP2Valid = p2LeftSprite && !p2LeftSprite->getUserObject("geode.texture-loader/fallback");
-			rP2Valid = p2RightSprite && !p2RightSprite->getUserObject("geode.texture-loader/fallback");
+		const bool jP2Valid = p2JumpSprite && !p2JumpSprite->getUserObject("geode.texture-loader/fallback");
+		const bool lP2Valid = p2LeftSprite && !p2LeftSprite->getUserObject("geode.texture-loader/fallback");
+		const bool rP2Valid = p2RightSprite && !p2RightSprite->getUserObject("geode.texture-loader/fallback");
 
-			jP2PressedValid = p2JumpPressedSprite && !p2JumpPressedSprite->getUserObject("geode.texture-loader/fallback");
-			lP2PressedValid = p2LeftPressedSprite && !p2LeftPressedSprite->getUserObject("geode.texture-loader/fallback");
-			rP2PressedValid = p2RightPressedSprite && !p2RightPressedSprite->getUserObject("geode.texture-loader/fallback");
-		}
+		const bool jP2PressedValid = p2JumpPressedSprite && !p2JumpPressedSprite->getUserObject("geode.texture-loader/fallback");
+		const bool lP2PressedValid = p2LeftPressedSprite && !p2LeftPressedSprite->getUserObject("geode.texture-loader/fallback");
+		const bool rP2PressedValid = p2RightPressedSprite && !p2RightPressedSprite->getUserObject("geode.texture-loader/fallback");
 
 		const auto platP1Move = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(0));
 		const auto platP2Move = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(1));
@@ -119,8 +107,6 @@ class $modify(MyUILayer, UILayer) {
 			if (jP1Valid) MyUILayer::addTexturesToButton(jumpButton, p1JumpSprite, "plat-p1-jump"_spr, manager->disableTintingP1Jump);
 			if (jP1PressedValid) MyUILayer::addTexturesToButton(jumpButton, p1JumpPressedSprite, "plat-p1-jump-pressed"_spr, manager->disableTintingP1Jump);
 		}
-
-		if (!m_gameLayer->m_level->m_twoPlayerMode) return;
 
 		if (platP2Move && platP2Move->getChildrenCount() > 1) {
 			const auto leftButton = typeinfo_cast<CCSprite*>(platP2Move->getChildren()->objectAtIndex(0));

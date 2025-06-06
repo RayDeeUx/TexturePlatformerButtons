@@ -45,6 +45,34 @@ public:
 	std::string rightPressedTextureP1;
 	std::string rightPressedTextureP2;
 
+	bool textureP1JumpWhenPressedTwoPlayer = false;
+	bool textureP2JumpWhenPressedTwoPlayer = false;
+	bool textureP1LeftWhenPressedTwoPlayer = false;
+	bool textureP2LeftWhenPressedTwoPlayer = false;
+	bool textureP1RightWhenPressedTwoPlayer = false;
+	bool textureP2RightWhenPressedTwoPlayer = false;
+
+	bool disableTintingP1JumpTwoPlayer = false;
+	bool disableTintingP2JumpTwoPlayer = false;
+	bool disableTintingP1LeftTwoPlayer = false;
+	bool disableTintingP2LeftTwoPlayer = false;
+	bool disableTintingP1RightTwoPlayer = false;
+	bool disableTintingP2RightTwoPlayer = false;
+
+	std::string jumpMainTextureP1TwoPlayer;
+	std::string jumpMainTextureP2TwoPlayer;
+	std::string leftMainTextureP1TwoPlayer;
+	std::string leftMainTextureP2TwoPlayer;
+	std::string rightMainTextureP1TwoPlayer;
+	std::string rightMainTextureP2TwoPlayer;
+
+	std::string jumpPressedTextureP1TwoPlayer;
+	std::string jumpPressedTextureP2TwoPlayer;
+	std::string leftPressedTextureP1TwoPlayer;
+	std::string leftPressedTextureP2TwoPlayer;
+	std::string rightPressedTextureP1TwoPlayer;
+	std::string rightPressedTextureP2TwoPlayer;
+
 	static Manager* getSharedInstance() {
 		if (!instance) instance = new Manager();
 		return instance;
@@ -96,6 +124,46 @@ public:
 		if (!geode::utils::string::endsWith(instance->rightPressedTextureP1, ".png") || !std::filesystem::exists(instance->rightPressedTextureP1)) instance->rightPressedTextureP1 = "";
 		instance->rightPressedTextureP2 = Mod::get()->getSettingValue<std::filesystem::path>("rightPressedTextureP2").string();
 		if (!geode::utils::string::endsWith(instance->rightPressedTextureP2, ".png") || !std::filesystem::exists(instance->rightPressedTextureP2)) instance->rightPressedTextureP2 = "";
+
+		instance->textureP1JumpWhenPressedTwoPlayer = Utils::getBool("textureP1JumpWhenPressedTwoPlayer");
+		instance->textureP2JumpWhenPressedTwoPlayer = Utils::getBool("textureP2JumpWhenPressedTwoPlayer");
+		instance->textureP1LeftWhenPressedTwoPlayer = Utils::getBool("textureP1LeftWhenPressedTwoPlayer");
+		instance->textureP2LeftWhenPressedTwoPlayer = Utils::getBool("textureP2LeftWhenPressedTwoPlayer");
+		instance->textureP1RightWhenPressedTwoPlayer = Utils::getBool("textureP1RightWhenPressedTwoPlayer");
+		instance->textureP2RightWhenPressedTwoPlayer = Utils::getBool("textureP2RightWhenPressedTwoPlayer");
+
+		instance->disableTintingP1JumpTwoPlayer = Utils::getBool("disableTintingP1JumpTwoPlayer");
+		instance->disableTintingP2JumpTwoPlayer = Utils::getBool("disableTintingP2JumpTwoPlayer");
+		instance->disableTintingP1LeftTwoPlayer = Utils::getBool("disableTintingP1LeftTwoPlayer");
+		instance->disableTintingP2LeftTwoPlayer = Utils::getBool("disableTintingP2LeftTwoPlayer");
+		instance->disableTintingP1RightTwoPlayer = Utils::getBool("disableTintingP1RightTwoPlayer");
+		instance->disableTintingP2RightTwoPlayer = Utils::getBool("disableTintingP2RightTwoPlayer");
+
+		instance->jumpMainTextureP1TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("jumpMainTextureP1TwoPlayer").string();
+		if (!geode::utils::string::endsWith(instance->jumpMainTextureP1TwoPlayer, ".png") || !std::filesystem::exists(instance->jumpMainTextureP1TwoPlayer)) instance->jumpMainTextureP1TwoPlayer = "";
+		instance->jumpMainTextureP2TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("jumpMainTextureP2TwoPlayer").string();
+		if (!geode::utils::string::endsWith(instance->jumpMainTextureP2TwoPlayer, ".png") || !std::filesystem::exists(instance->jumpMainTextureP2TwoPlayer)) instance->jumpMainTextureP2TwoPlayer = "";
+		instance->leftMainTextureP1TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("leftMainTextureP1TwoPlayer").string();
+		if (!geode::utils::string::endsWith(instance->leftMainTextureP1TwoPlayer, ".png") || !std::filesystem::exists(instance->leftMainTextureP1TwoPlayer)) instance->leftMainTextureP1TwoPlayer = "";
+		instance->leftMainTextureP2TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("leftMainTextureP2TwoPlayer").string();
+		if (!geode::utils::string::endsWith(instance->leftMainTextureP2TwoPlayer, ".png") || !std::filesystem::exists(instance->leftMainTextureP2TwoPlayer)) instance->leftMainTextureP2TwoPlayer = "";
+		instance->rightMainTextureP1TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("rightMainTextureP1TwoPlayer").string();
+		if (!geode::utils::string::endsWith(instance->rightMainTextureP1TwoPlayer, ".png") || !std::filesystem::exists(instance->rightMainTextureP1TwoPlayer)) instance->rightMainTextureP1TwoPlayer = "";
+		instance->rightMainTextureP2TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("rightMainTextureP2TwoPlayer").string();
+		if (!geode::utils::string::endsWith(instance->rightMainTextureP2TwoPlayer, ".png") || !std::filesystem::exists(instance->rightMainTextureP2TwoPlayer)) instance->rightMainTextureP2TwoPlayer = "";
+
+		instance->jumpPressedTextureP1TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("jumpPressedTextureP1TwoPlayer").string();
+		if (!geode::utils::string::endsWith(instance->jumpPressedTextureP1TwoPlayer, ".png") || !std::filesystem::exists(instance->jumpPressedTextureP1TwoPlayer)) instance->jumpPressedTextureP1TwoPlayer = "";
+		instance->jumpPressedTextureP2TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("jumpPressedTextureP2TwoPlayer").string();
+		if (!geode::utils::string::endsWith(instance->jumpPressedTextureP2TwoPlayer, ".png") || !std::filesystem::exists(instance->jumpPressedTextureP2TwoPlayer)) instance->jumpPressedTextureP2TwoPlayer = "";
+		instance->leftPressedTextureP1TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("leftPressedTextureP1TwoPlayer").string();
+		if (!geode::utils::string::endsWith(instance->leftPressedTextureP1TwoPlayer, ".png") || !std::filesystem::exists(instance->leftPressedTextureP1TwoPlayer)) instance->leftPressedTextureP1TwoPlayer = "";
+		instance->leftPressedTextureP2TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("leftPressedTextureP2TwoPlayer").string();
+		if (!geode::utils::string::endsWith(instance->leftPressedTextureP2TwoPlayer, ".png") || !std::filesystem::exists(instance->leftPressedTextureP2TwoPlayer)) instance->leftPressedTextureP2TwoPlayer = "";
+		instance->rightPressedTextureP1TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("rightPressedTextureP1TwoPlayer").string();
+		if (!geode::utils::string::endsWith(instance->rightPressedTextureP1TwoPlayer, ".png") || !std::filesystem::exists(instance->rightPressedTextureP1TwoPlayer)) instance->rightPressedTextureP1TwoPlayer = "";
+		instance->rightPressedTextureP2TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("rightPressedTextureP2TwoPlayer").string();
+		if (!geode::utils::string::endsWith(instance->rightPressedTextureP2TwoPlayer, ".png") || !std::filesystem::exists(instance->rightPressedTextureP2TwoPlayer)) instance->rightPressedTextureP2TwoPlayer = "";
 	}
 
 };
