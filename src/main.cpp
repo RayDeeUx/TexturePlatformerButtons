@@ -258,15 +258,15 @@ class $modify(MyUILayer, UILayer) {
 class $modify(MyPlayLayer, PlayLayer) {
 	void resume() {
 		PlayLayer::resume();
-		if (!m_uiLayer) return;
+		if (!m_uiLayer || !m_uiLayer->m_uiNodes) return;
 
 		Manager* manager = Manager::getSharedInstance();
 		if (!manager->enabled) return;
 
-		const auto platP1Move = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(0));
-		const auto platP2Move = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(1));
-		const auto platP1Jump = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(2));
-		const auto platP2Jump = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(3));
+		const auto platP1Move = typeinfo_cast<CCNode*>(m_uiLayer->m_uiNodes->objectAtIndex(0));
+		const auto platP2Move = typeinfo_cast<CCNode*>(m_uiLayer->m_uiNodes->objectAtIndex(1));
+		const auto platP1Jump = typeinfo_cast<CCNode*>(m_uiLayer->m_uiNodes->objectAtIndex(2));
+		const auto platP2Jump = typeinfo_cast<CCNode*>(m_uiLayer->m_uiNodes->objectAtIndex(3));
 
 		if (platP1Move && platP1Move->getChildrenCount() > 1) {
 			const auto leftButton = typeinfo_cast<CCSprite*>(platP1Move->getChildren()->objectAtIndex(0));
