@@ -167,7 +167,7 @@ class $modify(MyUILayer, UILayer) {
 		if (!isPressedSprite) return;
 
 		replacementSprite->setVisible(false);
-		if (!originalSprite->getChildByID(utils::string::replace(nodeID, "-pressed", ""))) originalSprite->setOpacity(originalOpacity);
+		// if (!originalSprite->getChildByID(utils::string::replace(nodeID, "-pressed", ""))) originalSprite->setOpacity(originalOpacity);
 	}
 
 	bool processUINodeTouch(GJUITouchEvent touchEvent, int p1, cocos2d::CCPoint point, GJUINode* node) {
