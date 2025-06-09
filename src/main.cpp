@@ -1,3 +1,4 @@
+#include <Geode/modify/PlayLayer.hpp>
 #include <Geode/modify/UILayer.hpp>
 #include "Settings.hpp"
 #include "Manager.hpp"
@@ -165,9 +166,10 @@ class $modify(MyUILayer, UILayer) {
 		replacementSprite->setID(nodeID);
 
 		if (!isPressedSprite) return;
-
 		replacementSprite->setVisible(false);
-		// if (!originalSprite->getChildByID(utils::string::replace(nodeID, "-pressed", ""))) originalSprite->setOpacity(originalOpacity);
+		
+		if (originalSprite->getChildByTag(6012025)) return;
+		originalSprite->setOpacity(originalOpacity);
 	}
 
 	bool processUINodeTouch(GJUITouchEvent touchEvent, int p1, cocos2d::CCPoint point, GJUINode* node) {
@@ -249,6 +251,51 @@ class $modify(MyUILayer, UILayer) {
 		if (presSprite) {
 			presSprite->setVisible(!showMainSprite);
 			if (const auto originalSprite = typeinfo_cast<CCSprite*>(presSprite->getParent()); originalSprite && !mainSprite) originalSprite->setOpacity(showMainSprite ? originalOpacity : 0);
+		}
+	}
+};
+
+class $modify(MyPlayLayer, PlayLayer) {
+	void resume() {
+		PlayLayer::resume();
+		if (!m_uiLayer) return;
+
+		Manager* manager = Manager::getSharedInstance();
+		if (!manager->enabled) return;
+
+		const auto platP1Move = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(0));
+		const auto platP2Move = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(1));
+		const auto platP1Jump = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(2));
+		const auto platP2Jump = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(3));
+
+		if (platP1Move && platP1Move->getChildrenCount() > 1) {
+			const auto leftButton = typeinfo_cast<CCSprite*>(platP1Move->getChildren()->objectAtIndex(0));
+			if (!leftButton) return log::info("[NULLPTR] AT leftButton! on PlayLayer::resume()");
+			if (leftButton->getChildByTag(6012025)) leftButton->setOpacity(0);
+
+			const auto rightButton = typeinfo_cast<CCSprite*>(platP1Move->getChildren()->objectAtIndex(1));
+			if (!rightButton) return log::info("[NULLPTR] AT rightButton! on PlayLayer::resume()");
+			if (rightButton->getChildByTag(6012025)) rightButton->setOpacity(0);
+		}
+		if (platP1Jump && platP1Jump->getChildrenCount() != 0) {
+			const auto jumpButton = typeinfo_cast<CCSprite*>(platP1Jump->getChildren()->objectAtIndex(0));
+			if (!jumpButton) return log::info("[NULLPTR] AT jumpButton! on PlayLayer::resume()");
+			if (jumpButton->getChildByTag(6012025)) jumpButton->setOpacity(0);
+		}
+
+		if (platP2Move && platP2Move->getChildrenCount() > 1) {
+			const auto leftButton = typeinfo_cast<CCSprite*>(platP2Move->getChildren()->objectAtIndex(0));
+			if (!leftButton) return log::info("[NULLPTR] AT leftButton! on PlayLayer::resume()");
+			if (leftButton->getChildByTag(6012025)) leftButton->setOpacity(0);
+
+			const auto rightButton = typeinfo_cast<CCSprite*>(platP2Move->getChildren()->objectAtIndex(1));
+			if (!rightButton) return log::info("[NULLPTR] AT rightButton! on PlayLayer::resume()");
+			if (rightButton->getChildByTag(6012025)) rightButton->setOpacity(0);
+		}
+		if (platP2Jump && platP2Jump->getChildrenCount() != 0) {
+			const auto jumpButton = typeinfo_cast<CCSprite*>(platP2Jump->getChildren()->objectAtIndex(0));
+			if (!jumpButton) return log::info("[NULLPTR] AT jumpButton! on PlayLayer::resume()");
+			if (jumpButton->getChildByTag(6012025)) jumpButton->setOpacity(0);
 		}
 	}
 };
