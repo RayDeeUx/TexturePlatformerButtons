@@ -259,6 +259,15 @@ class $modify(MyUILayer, UILayer) {
 	}
 };
 
+/*
+honestly it's pretty sad to see that i had to hook
+PlayLayer::resume() at all to clean up the mess that
+robtop left behind. this shouldn't even be necessary,
+but it was what worked for two of my three android
+testers to stop the original sprites from revealing
+themselves during game pause. pretty stupid but oh well
+-- raydeeux
+*/
 class $modify(MyPlayLayer, PlayLayer) {
 	void resume() {
 		PlayLayer::resume();
