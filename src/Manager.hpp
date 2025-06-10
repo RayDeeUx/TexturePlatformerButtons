@@ -14,6 +14,8 @@ protected:
 public:
 
 	bool enabled = false;
+	bool calledAlready = false;
+	bool hasNodeIDs = false;
 
 	bool textureP1JumpWhenPressed = false;
 	bool textureP2JumpWhenPressed = false;

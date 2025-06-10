@@ -1,4 +1,5 @@
 #include <Geode/modify/PlayLayer.hpp>
+#include <Geode/modify/MenuLayer.hpp>
 #include <Geode/modify/UILayer.hpp>
 #include "Settings.hpp"
 #include "Manager.hpp"
@@ -94,10 +95,10 @@ class $modify(MyUILayer, UILayer) {
 		log::info("lP2PressedValid: {}", lP2PressedValid);
 		log::info("rP2PressedValid: {}", rP2PressedValid);
 
-		const auto platP1Move = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(0));
-		const auto platP2Move = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(1));
-		const auto platP1Jump = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(2));
-		const auto platP2Jump = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(3));
+		const auto platP1Move = manager->hasNodeIDs ? m_uiNodes->getChildByID("platformer-p1-move-button") : typeinfo_cast<CCNode*>(m_uiNodesobjectAtIndex(0));
+		const auto platP2Move = manager->hasNodeIDs ? m_uiNodes->getChildByID("platformer-p2-move-button") : typeinfo_cast<CCNode*>(m_uiNodesobjectAtIndex(1));
+		const auto platP1Jump = manager->hasNodeIDs ? m_uiNodes->getChildByID("platformer-p1-jump-button") : typeinfo_cast<CCNode*>(m_uiNodesobjectAtIndex(2));
+		const auto platP2Jump = manager->hasNodeIDs ? m_uiNodes->getChildByID("platformer-p2-jump-button") : typeinfo_cast<CCNode*>(m_uiNodesobjectAtIndex(3));
 
 		Fields* fields = m_fields.self();
 
@@ -182,10 +183,10 @@ class $modify(MyUILayer, UILayer) {
 		if (!is2P && !manager->textureP1JumpWhenPressed && !manager->textureP2JumpWhenPressed && !manager->textureP1LeftWhenPressed && !manager->textureP2LeftWhenPressed && !manager->textureP1RightWhenPressed && !manager->textureP2RightWhenPressed) return result;
 		if (is2P && !manager->textureP1JumpWhenPressedTwoPlayer && !manager->textureP2JumpWhenPressedTwoPlayer && !manager->textureP1LeftWhenPressedTwoPlayer && !manager->textureP2LeftWhenPressedTwoPlayer && !manager->textureP1RightWhenPressedTwoPlayer && !manager->textureP2RightWhenPressedTwoPlayer) return result;
 
-		const auto platP1Move = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(0));
-		const auto platP2Move = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(1));
-		const auto platP1Jump = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(2));
-		const auto platP2Jump = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(3));
+		const auto platP1Move = manager->hasNodeIDs ? m_uiNodes->getChildByID("platformer-p1-move-button") : typeinfo_cast<CCNode*>(m_uiNodesobjectAtIndex(0));
+		const auto platP2Move = manager->hasNodeIDs ? m_uiNodes->getChildByID("platformer-p2-move-button") : typeinfo_cast<CCNode*>(m_uiNodesobjectAtIndex(1));
+		const auto platP1Jump = manager->hasNodeIDs ? m_uiNodes->getChildByID("platformer-p1-jump-button") : typeinfo_cast<CCNode*>(m_uiNodesobjectAtIndex(2));
+		const auto platP2Jump = manager->hasNodeIDs ? m_uiNodes->getChildByID("platformer-p2-jump-button") : typeinfo_cast<CCNode*>(m_uiNodesobjectAtIndex(3));
 
 		const Fields* fields = m_fields.self();
 
@@ -276,10 +277,10 @@ class $modify(MyPlayLayer, PlayLayer) {
 		Manager* manager = Manager::getSharedInstance();
 		if (!manager->enabled) return;
 
-		const auto platP1Move = typeinfo_cast<CCNode*>(m_uiLayer->m_uiNodes->objectAtIndex(0));
-		const auto platP2Move = typeinfo_cast<CCNode*>(m_uiLayer->m_uiNodes->objectAtIndex(1));
-		const auto platP1Jump = typeinfo_cast<CCNode*>(m_uiLayer->m_uiNodes->objectAtIndex(2));
-		const auto platP2Jump = typeinfo_cast<CCNode*>(m_uiLayer->m_uiNodes->objectAtIndex(3));
+		const auto platP1Move = manager->hasNodeIDs ? m_uiLayer->m_uiNodes->getChildByID("platformer-p1-move-button") : typeinfo_cast<CCNode*>(m_uiLayer->m_uiNodesobjectAtIndex(0));
+		const auto platP2Move = manager->hasNodeIDs ? m_uiLayer->m_uiNodes->getChildByID("platformer-p2-move-button") : typeinfo_cast<CCNode*>(m_uiLayer->m_uiNodesobjectAtIndex(1));
+		const auto platP1Jump = manager->hasNodeIDs ? m_uiLayer->m_uiNodes->getChildByID("platformer-p1-jump-button") : typeinfo_cast<CCNode*>(m_uiLayer->m_uiNodesobjectAtIndex(2));
+		const auto platP2Jump = manager->hasNodeIDs ? m_uiLayer->m_uiNodes->getChildByID("platformer-p2-jump-button") : typeinfo_cast<CCNode*>(m_uiLayer->m_uiNodesobjectAtIndex(3));
 
 		if (platP1Move && platP1Move->getChildrenCount() > 1) {
 			const auto leftButton = typeinfo_cast<CCSprite*>(platP1Move->getChildren()->objectAtIndex(0));
@@ -310,5 +311,18 @@ class $modify(MyPlayLayer, PlayLayer) {
 			if (!jumpButton) return log::info("[NULLPTR] AT jumpButton! on PlayLayer::resume()");
 			if (jumpButton->getChildByTag(6012025)) jumpButton->setOpacity(0);
 		}
+	}
+};
+
+class $modify(MyMenuLayer, MenuLayer) {
+	bool init() {
+		if (!MenuLayer::init()) return false;
+
+		Manager* manager = Manager::getSharedInstance();
+		if (manager->calledAlready) return true;
+
+		manager->hasNodeIDs = Utils::isModLoaded("geode.node-ids");
+
+		return true;
 	}
 };
