@@ -167,5 +167,4 @@ public:
 		instance->rightPressedTextureP2TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("rightPressedTextureP2TwoPlayer").string();
 		if (!geode::utils::string::endsWith(instance->rightPressedTextureP2TwoPlayer, ".png") || !std::filesystem::exists(instance->rightPressedTextureP2TwoPlayer)) instance->rightPressedTextureP2TwoPlayer = "";
 	}
-
 };
