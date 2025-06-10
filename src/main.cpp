@@ -47,6 +47,7 @@ class $modify(MyUILayer, UILayer) {
 		log::info("initalizing sprites !!!");
 
 		const bool is2P = m_gameLayer->m_level->m_twoPlayerMode;
+		log::info("is2P: {}", is2P);
 
 		CCSprite* p1JumpSprite = CCSprite::create(is2P ? manager->jumpMainTextureP1TwoPlayer.c_str() : manager->jumpMainTextureP1.c_str());
 		if (is2P ? manager->textureP1JumpWhenPressedTwoPlayer : manager->textureP1JumpWhenPressed) p1JumpPressedSprite = CCSprite::create(is2P ? manager->jumpPressedTextureP1TwoPlayer.c_str() : manager->jumpPressedTextureP1.c_str());
@@ -82,18 +83,18 @@ class $modify(MyUILayer, UILayer) {
 		const bool lP2PressedValid = p2LeftPressedSprite && !p2LeftPressedSprite->getUserObject("geode.texture-loader/fallback");
 		const bool rP2PressedValid = p2RightPressedSprite && !p2RightPressedSprite->getUserObject("geode.texture-loader/fallback");
 
-		log::info("jP1Valid: {}", jP1Valid);
-		log::info("lP1Valid: {}", lP1Valid);
-		log::info("rP1Valid: {}", rP1Valid);
-		log::info("jP1PressedValid: {}", jP1PressedValid);
-		log::info("lP1PressedValid: {}", lP1PressedValid);
-		log::info("rP1PressedValid: {}", rP1PressedValid);
-		log::info("jP2Valid: {}", jP2Valid);
-		log::info("lP2Valid: {}", lP2Valid);
-		log::info("rP2Valid: {}", rP2Valid);
-		log::info("jP2PressedValid: {}", jP2PressedValid);
-		log::info("lP2PressedValid: {}", lP2PressedValid);
-		log::info("rP2PressedValid: {}", rP2PressedValid);
+		log::info("jP1Valid: {} (if this says \"false\", it means you need to find an actual PNG file)", jP1Valid);
+		log::info("lP1Valid: {} (if this says \"false\", it means you need to find an actual PNG file)", lP1Valid);
+		log::info("rP1Valid: {} (if this says \"false\", it means you need to find an actual PNG file)", rP1Valid);
+		log::info("jP1PressedValid: {} (if this says \"false\", it means you need to find an actual PNG file)", jP1PressedValid);
+		log::info("lP1PressedValid: {} (if this says \"false\", it means you need to find an actual PNG file)", lP1PressedValid);
+		log::info("rP1PressedValid: {} (if this says \"false\", it means you need to find an actual PNG file)", rP1PressedValid);
+		log::info("jP2Valid: {} (if this says \"false\", it means you need to find an actual PNG file)", jP2Valid);
+		log::info("lP2Valid: {} (if this says \"false\", it means you need to find an actual PNG file)", lP2Valid);
+		log::info("rP2Valid: {} (if this says \"false\", it means you need to find an actual PNG file)", rP2Valid);
+		log::info("jP2PressedValid: {} (if this says \"false\", it means you need to find an actual PNG file)", jP2PressedValid);
+		log::info("lP2PressedValid: {} (if this says \"false\", it means you need to find an actual PNG file)", lP2PressedValid);
+		log::info("rP2PressedValid: {} (if this says \"false\", it means you need to find an actual PNG file)", rP2PressedValid);
 
 		const auto platP1Move = manager->hasNodeIDs ? this->getChildByID("platformer-p1-move-button") : typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(0));
 		const auto platP2Move = manager->hasNodeIDs ? this->getChildByID("platformer-p2-move-button") : typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(1));
