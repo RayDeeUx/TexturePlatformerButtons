@@ -8,6 +8,6 @@ Texture each Platformer UI button individually with images (`.png` files) of you
 
 *__This mod does not come with its own presets for platformer UI buttons; go find images on your own. <cy>(Images are automatically re-sized to fit within the original button's width or height.)</c>__*
 
-Mod idea suggested by [CoolGuy](https://discord.com/users/1364564255625580578).
+Mod idea suggested by [CoolGuy](https://discord.com/users/1364564255625580578). Thanks to [km7](https://github.com/kingminer7) and [undefined0](https://github.com/undefined06855) for testing + bugsquashing!
 
 This [Geode mod](https://geode-sdk.org) is licensed under LGPLv2. To report bugs or get help with using my mods, press the Discord button in the lower left corner.
