@@ -101,30 +101,30 @@ public:
 		instance->logging = Utils::getBool("logging");
 		Mod::get()->setLoggingEnabled(instance->logging);
 
-		instance->jumpMainTextureP1 = Mod::get()->getSettingValue<std::filesystem::path>("jumpMainTextureP1").string();
+		instance->jumpMainTextureP1 = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("jumpMainTextureP1"));
 		if (!geode::utils::string::endsWith(instance->jumpMainTextureP1, ".png") || !std::filesystem::exists(instance->jumpMainTextureP1)) instance->jumpMainTextureP1 = "";
-		instance->jumpMainTextureP2 = Mod::get()->getSettingValue<std::filesystem::path>("jumpMainTextureP2").string();
+		instance->jumpMainTextureP2 = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("jumpMainTextureP2"));
 		if (!geode::utils::string::endsWith(instance->jumpMainTextureP2, ".png") || !std::filesystem::exists(instance->jumpMainTextureP2)) instance->jumpMainTextureP2 = "";
-		instance->leftMainTextureP1 = Mod::get()->getSettingValue<std::filesystem::path>("leftMainTextureP1").string();
+		instance->leftMainTextureP1 = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("leftMainTextureP1"));
 		if (!geode::utils::string::endsWith(instance->leftMainTextureP1, ".png") || !std::filesystem::exists(instance->leftMainTextureP1)) instance->leftMainTextureP1 = "";
-		instance->leftMainTextureP2 = Mod::get()->getSettingValue<std::filesystem::path>("leftMainTextureP2").string();
+		instance->leftMainTextureP2 = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("leftMainTextureP2"));
 		if (!geode::utils::string::endsWith(instance->leftMainTextureP2, ".png") || !std::filesystem::exists(instance->leftMainTextureP2)) instance->leftMainTextureP2 = "";
-		instance->rightMainTextureP1 = Mod::get()->getSettingValue<std::filesystem::path>("rightMainTextureP1").string();
+		instance->rightMainTextureP1 = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("rightMainTextureP1"));
 		if (!geode::utils::string::endsWith(instance->rightMainTextureP1, ".png") || !std::filesystem::exists(instance->rightMainTextureP1)) instance->rightMainTextureP1 = "";
-		instance->rightMainTextureP2 = Mod::get()->getSettingValue<std::filesystem::path>("rightMainTextureP2").string();
+		instance->rightMainTextureP2 = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("rightMainTextureP2"));
 		if (!geode::utils::string::endsWith(instance->rightMainTextureP2, ".png") || !std::filesystem::exists(instance->rightMainTextureP2)) instance->rightMainTextureP2 = "";
 
-		instance->jumpPressedTextureP1 = Mod::get()->getSettingValue<std::filesystem::path>("jumpPressedTextureP1").string();
+		instance->jumpPressedTextureP1 = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("jumpPressedTextureP1"));
 		if (!geode::utils::string::endsWith(instance->jumpPressedTextureP1, ".png") || !std::filesystem::exists(instance->jumpPressedTextureP1)) instance->jumpPressedTextureP1 = "";
-		instance->jumpPressedTextureP2 = Mod::get()->getSettingValue<std::filesystem::path>("jumpPressedTextureP2").string();
+		instance->jumpPressedTextureP2 = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("jumpPressedTextureP2"));
 		if (!geode::utils::string::endsWith(instance->jumpPressedTextureP2, ".png") || !std::filesystem::exists(instance->jumpPressedTextureP2)) instance->jumpPressedTextureP2 = "";
-		instance->leftPressedTextureP1 = Mod::get()->getSettingValue<std::filesystem::path>("leftPressedTextureP1").string();
+		instance->leftPressedTextureP1 = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("leftPressedTextureP1"));
 		if (!geode::utils::string::endsWith(instance->leftPressedTextureP1, ".png") || !std::filesystem::exists(instance->leftPressedTextureP1)) instance->leftPressedTextureP1 = "";
-		instance->leftPressedTextureP2 = Mod::get()->getSettingValue<std::filesystem::path>("leftPressedTextureP2").string();
+		instance->leftPressedTextureP2 = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("leftPressedTextureP2"));
 		if (!geode::utils::string::endsWith(instance->leftPressedTextureP2, ".png") || !std::filesystem::exists(instance->leftPressedTextureP2)) instance->leftPressedTextureP2 = "";
-		instance->rightPressedTextureP1 = Mod::get()->getSettingValue<std::filesystem::path>("rightPressedTextureP1").string();
+		instance->rightPressedTextureP1 = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("rightPressedTextureP1"));
 		if (!geode::utils::string::endsWith(instance->rightPressedTextureP1, ".png") || !std::filesystem::exists(instance->rightPressedTextureP1)) instance->rightPressedTextureP1 = "";
-		instance->rightPressedTextureP2 = Mod::get()->getSettingValue<std::filesystem::path>("rightPressedTextureP2").string();
+		instance->rightPressedTextureP2 = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("rightPressedTextureP2"));
 		if (!geode::utils::string::endsWith(instance->rightPressedTextureP2, ".png") || !std::filesystem::exists(instance->rightPressedTextureP2)) instance->rightPressedTextureP2 = "";
 
 		instance->textureP1JumpWhenPressedTwoPlayer = Utils::getBool("textureP1JumpWhenPressedTwoPlayer");
@@ -141,30 +141,30 @@ public:
 		instance->disableTintingP1RightTwoPlayer = Utils::getBool("disableTintingP1RightTwoPlayer");
 		instance->disableTintingP2RightTwoPlayer = Utils::getBool("disableTintingP2RightTwoPlayer");
 
-		instance->jumpMainTextureP1TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("jumpMainTextureP1TwoPlayer").string();
+		instance->jumpMainTextureP1TwoPlayer = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("jumpMainTextureP1TwoPlayer"));
 		if (!geode::utils::string::endsWith(instance->jumpMainTextureP1TwoPlayer, ".png") || !std::filesystem::exists(instance->jumpMainTextureP1TwoPlayer)) instance->jumpMainTextureP1TwoPlayer = "";
-		instance->jumpMainTextureP2TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("jumpMainTextureP2TwoPlayer").string();
+		instance->jumpMainTextureP2TwoPlayer = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("jumpMainTextureP2TwoPlayer"));
 		if (!geode::utils::string::endsWith(instance->jumpMainTextureP2TwoPlayer, ".png") || !std::filesystem::exists(instance->jumpMainTextureP2TwoPlayer)) instance->jumpMainTextureP2TwoPlayer = "";
-		instance->leftMainTextureP1TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("leftMainTextureP1TwoPlayer").string();
+		instance->leftMainTextureP1TwoPlayer = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("leftMainTextureP1TwoPlayer"));
 		if (!geode::utils::string::endsWith(instance->leftMainTextureP1TwoPlayer, ".png") || !std::filesystem::exists(instance->leftMainTextureP1TwoPlayer)) instance->leftMainTextureP1TwoPlayer = "";
-		instance->leftMainTextureP2TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("leftMainTextureP2TwoPlayer").string();
+		instance->leftMainTextureP2TwoPlayer = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("leftMainTextureP2TwoPlayer"));
 		if (!geode::utils::string::endsWith(instance->leftMainTextureP2TwoPlayer, ".png") || !std::filesystem::exists(instance->leftMainTextureP2TwoPlayer)) instance->leftMainTextureP2TwoPlayer = "";
-		instance->rightMainTextureP1TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("rightMainTextureP1TwoPlayer").string();
+		instance->rightMainTextureP1TwoPlayer = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("rightMainTextureP1TwoPlayer"));
 		if (!geode::utils::string::endsWith(instance->rightMainTextureP1TwoPlayer, ".png") || !std::filesystem::exists(instance->rightMainTextureP1TwoPlayer)) instance->rightMainTextureP1TwoPlayer = "";
-		instance->rightMainTextureP2TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("rightMainTextureP2TwoPlayer").string();
+		instance->rightMainTextureP2TwoPlayer = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("rightMainTextureP2TwoPlayer"));
 		if (!geode::utils::string::endsWith(instance->rightMainTextureP2TwoPlayer, ".png") || !std::filesystem::exists(instance->rightMainTextureP2TwoPlayer)) instance->rightMainTextureP2TwoPlayer = "";
 
-		instance->jumpPressedTextureP1TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("jumpPressedTextureP1TwoPlayer").string();
+		instance->jumpPressedTextureP1TwoPlayer = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("jumpPressedTextureP1TwoPlayer"));
 		if (!geode::utils::string::endsWith(instance->jumpPressedTextureP1TwoPlayer, ".png") || !std::filesystem::exists(instance->jumpPressedTextureP1TwoPlayer)) instance->jumpPressedTextureP1TwoPlayer = "";
-		instance->jumpPressedTextureP2TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("jumpPressedTextureP2TwoPlayer").string();
+		instance->jumpPressedTextureP2TwoPlayer = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("jumpPressedTextureP2TwoPlayer"));
 		if (!geode::utils::string::endsWith(instance->jumpPressedTextureP2TwoPlayer, ".png") || !std::filesystem::exists(instance->jumpPressedTextureP2TwoPlayer)) instance->jumpPressedTextureP2TwoPlayer = "";
-		instance->leftPressedTextureP1TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("leftPressedTextureP1TwoPlayer").string();
+		instance->leftPressedTextureP1TwoPlayer = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("leftPressedTextureP1TwoPlayer"));
 		if (!geode::utils::string::endsWith(instance->leftPressedTextureP1TwoPlayer, ".png") || !std::filesystem::exists(instance->leftPressedTextureP1TwoPlayer)) instance->leftPressedTextureP1TwoPlayer = "";
-		instance->leftPressedTextureP2TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("leftPressedTextureP2TwoPlayer").string();
+		instance->leftPressedTextureP2TwoPlayer = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("leftPressedTextureP2TwoPlayer"));
 		if (!geode::utils::string::endsWith(instance->leftPressedTextureP2TwoPlayer, ".png") || !std::filesystem::exists(instance->leftPressedTextureP2TwoPlayer)) instance->leftPressedTextureP2TwoPlayer = "";
-		instance->rightPressedTextureP1TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("rightPressedTextureP1TwoPlayer").string();
+		instance->rightPressedTextureP1TwoPlayer = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("rightPressedTextureP1TwoPlayer"));
 		if (!geode::utils::string::endsWith(instance->rightPressedTextureP1TwoPlayer, ".png") || !std::filesystem::exists(instance->rightPressedTextureP1TwoPlayer)) instance->rightPressedTextureP1TwoPlayer = "";
-		instance->rightPressedTextureP2TwoPlayer = Mod::get()->getSettingValue<std::filesystem::path>("rightPressedTextureP2TwoPlayer").string();
+		instance->rightPressedTextureP2TwoPlayer = Utils::toNormalizedString(Mod::get()->getSettingValue<std::filesystem::path>("rightPressedTextureP2TwoPlayer"));
 		if (!geode::utils::string::endsWith(instance->rightPressedTextureP2TwoPlayer, ".png") || !std::filesystem::exists(instance->rightPressedTextureP2TwoPlayer)) instance->rightPressedTextureP2TwoPlayer = "";
 	}
 };

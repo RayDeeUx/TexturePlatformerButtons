@@ -25,4 +25,12 @@ namespace Utils {
 
 	std::string getModVersion(Mod* mod) { return mod->getVersion().toNonVString(); }
 
+	std::string toNormalizedString(const std::filesystem::path& path) {
+		#ifdef GEODE_IS_WINDOWS
+		return geode::utils::string::wideToUtf8(path.wstring());
+		#else
+		return path.string();
+		#endif
+	}
+
 }

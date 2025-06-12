@@ -15,4 +15,6 @@ namespace Utils {
 	bool isModLoaded(const std::string& modID);
 	Mod* getMod(const std::string& modID);
 	std::string getModVersion(Mod* mod);
+
+	std::string toNormalizedString(const std::filesystem::path& path);
 }
