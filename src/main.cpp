@@ -1,3 +1,5 @@
+#include <Geode/modify/PlayLayer.hpp>
+#include <Geode/modify/MenuLayer.hpp>
 #include <Geode/modify/UILayer.hpp>
 #include "Settings.hpp"
 #include "Manager.hpp"
