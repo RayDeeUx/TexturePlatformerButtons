@@ -47,18 +47,21 @@ GLubyte platP2JumpOpacity = 0;
 static void addTexturesToButton(CCSprite* originalSprite, CCSprite* replacementSprite, const std::string& nodeID, const bool disableTinting) {
 	if (!originalSprite || !replacementSprite) return log::info("[NULLPTR]: !originalSprite: {} | !replacementSprite: {}", !originalSprite, !replacementSprite);
 
+	const bool isPressedSprite = utils::string::contains(nodeID, "-pressed");
+	std::string userObjectID = isPressedSprite ? "pressed-added"_spr : "unpressed-added"_spr;
+	if (originalSprite->getUserObject(userObjectID)) return log::info("[EARLY RETURN]: {} was already added for potential sprite {}", userObjectID, nodeID);
+
 	const GLubyte originalOpacity = originalSprite->getOpacity();
+	const CCSize originalSize = originalSprite->getContentSize();
+	const CCSize replacementSize = replacementSprite->getContentSize();
+	const float yRatio = originalSize.height / replacementSize.height;
+	const float xRatio = originalSize.width / replacementSize.width;
 
 	originalSprite->setCascadeColorEnabled(!disableTinting);
 	originalSprite->setCascadeOpacityEnabled(false);
 	originalSprite->setOpacity(0);
 	originalSprite->addChild(replacementSprite);
-
-	const CCSize originalSize = originalSprite->getContentSize();
-	const CCSize replacementSize = replacementSprite->getContentSize();
-	const bool isPressedSprite = utils::string::contains(nodeID, "-pressed");
-	const float yRatio = originalSize.height / replacementSize.height;
-	const float xRatio = originalSize.width / replacementSize.width;
+	originalSprite->setUserObject(userObjectID, CCBool::create(true));
 
 	replacementSprite->setTag(isPressedSprite ? 6022025 : 6012025);
 	replacementSprite->setScale(std::min(xRatio, yRatio));
