@@ -74,7 +74,7 @@ static void addTexturesToButton(CCSprite* originalSprite, CCSprite* replacementS
 	if (!originalSprite->getChildByTag(6012025)) originalSprite->setOpacity(originalOpacity);
 }
 
-void findAndAddTextures(const UILayer* uiLayer, const GJBaseGameLayer* gjbgl) {
+void findAndAddTextures(UILayer* uiLayer, const GJBaseGameLayer* gjbgl) {
 	const Manager* manager = Manager::getSharedInstance();
 	if (!manager->enabled) return;
 
@@ -135,10 +135,10 @@ void findAndAddTextures(const UILayer* uiLayer, const GJBaseGameLayer* gjbgl) {
 	log::info("lP2PressedValid: {}", lP2PressedValid);
 	log::info("rP2PressedValid: {}", rP2PressedValid);
 
-	const auto platP1Move = typeinfo_cast<CCNode*>(uiLayer->m_uiNodes->objectAtIndex(0));
-	const auto platP2Move = typeinfo_cast<CCNode*>(uiLayer->m_uiNodes->objectAtIndex(1));
-	const auto platP1Jump = typeinfo_cast<CCNode*>(uiLayer->m_uiNodes->objectAtIndex(2));
-	const auto platP2Jump = typeinfo_cast<CCNode*>(uiLayer->m_uiNodes->objectAtIndex(3));
+	const auto platP1Move = manager->hasNodeIDs ? uiLayer->getChildByID("platformer-p1-move-button") : typeinfo_cast<GJUINode*>(uiLayer->m_uiNodes->objectAtIndex(0));
+	const auto platP2Move = manager->hasNodeIDs ? uiLayer->getChildByID("platformer-p2-move-button") : typeinfo_cast<GJUINode*>(uiLayer->m_uiNodes->objectAtIndex(1));
+	const auto platP1Jump = manager->hasNodeIDs ? uiLayer->getChildByID("platformer-p1-jump-button") : typeinfo_cast<GJUINode*>(uiLayer->m_uiNodes->objectAtIndex(2));
+	const auto platP2Jump = manager->hasNodeIDs ? uiLayer->getChildByID("platformer-p2-jump-button") : typeinfo_cast<GJUINode*>(uiLayer->m_uiNodes->objectAtIndex(3));
 
 	if (platP1Move && platP1Move->getChildrenCount() > 1) {
 		const auto leftButton = typeinfo_cast<CCSprite*>(platP1Move->getChildren()->objectAtIndex(0));
