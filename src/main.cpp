@@ -208,20 +208,20 @@ class $modify(MyUILayer, UILayer) {
 		}
 
 		if (touchEvent != GJUITouchEvent::Moved) log::info("————————————————————————————————————————————————————————————");
-		if (node == platP1Jump && result) {
-			if (touchEvent == GJUITouchEvent::Pressed) log::info("user pressed player one jump");
-			else if (touchEvent == GJUITouchEvent::Ended) log::info("user released player one jump");
-			MyUILayer::setSpriteVisibility(node, unpressedPlayerOneJumpSpriteID, pressedPlayerOneJumpSpriteID, touchEvent == GJUITouchEvent::Ended, platP1JumpOpacity);
-		} else if (node == platP2Jump && result) {
-			if (touchEvent == GJUITouchEvent::Pressed) log::info("user pressed player two jump");
-			else if (touchEvent == GJUITouchEvent::Ended) log::info("user released player two jump");
-			MyUILayer::setSpriteVisibility(node, unpressedPlayerTwoJumpSpriteID, pressedPlayerTwoJumpSpriteID, touchEvent == GJUITouchEvent::Ended, platP2JumpOpacity);
-		} else MyUILayer::manipulateSpriteVisibility(node);
+		if ((node == platP1Jump || node == platP2Jump) && result) MyUILayer::setJumpSpriteVisibility(node, touchEvent);
+		else MyUILayer::setMoveSpriteVisibility(node);
 
 		return result;
 	}
 
-	static void manipulateSpriteVisibility(GJUINode* node) {
+	static void setJumpSpriteVisibility(GJUINode* node, const GJUITouchEvent touchEvent) {
+		const bool isEnded = touchEvent == GJUITouchEvent::Ended;
+		if (touchEvent == GJUITouchEvent::Pressed) log::info("user pressed player {} jump", node->m_player2 ? "two" : "one");
+		else if (isEnded) log::info("user released player {} jump", node->m_player2 ? "two" : "one");
+		MyUILayer::setSpriteVisibility(node, node->m_player2 ? unpressedPlayerTwoJumpSpriteID : unpressedPlayerOneJumpSpriteID, node->m_player2 ? pressedPlayerTwoJumpSpriteID : pressedPlayerOneJumpSpriteID, isEnded, platP2JumpOpacity);
+	}
+
+	static void setMoveSpriteVisibility(GJUINode* node) {
 		const bool isLeft = node->m_currentButton == PlayerButton::Left;
 		const bool isRight = node->m_currentButton == PlayerButton::Right;
 		if (isLeft) log::info("user pressed player {} move left.", node->m_player2 ? "two" : "one");
