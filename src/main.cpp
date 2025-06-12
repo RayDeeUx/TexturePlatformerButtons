@@ -187,7 +187,6 @@ class $modify(MyUILayer, UILayer) {
 	#ifndef GEODE_IS_WINDOWS
 	void togglePlatformerMode(bool platformer) {
 		UILayer::togglePlatformerMode(platformer);
-		if (!m_uiNodes || !m_gameLayer || !m_gameLayer->m_level || !m_gameLayer->m_level->isPlatformer()) return;
 	#else
 	void resetUINodeState() {
 		UILayer::resetUINodeState();
