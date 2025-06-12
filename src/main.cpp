@@ -21,6 +21,22 @@ Go ahead, I won't stop you.
 	if (const auto result = utils::file::writeString(readme, content); result.isErr()) log::error("Error writing to README.txt");
 }
 
+static std::string unpressedPlayerOneJumpSpriteID = "plat-p1-jump"_spr;
+static std::string unpressedPlayerOneLeftSpriteID = "plat-p1-left"_spr;
+static std::string unpressedPlayerOneRightSpriteID = "plat-p1-right"_spr;
+
+static std::string pressedPlayerOneJumpSpriteID = "plat-p1-jump-pressed"_spr;
+static std::string pressedPlayerOneLeftSpriteID = "plat-p1-left-pressed"_spr;
+static std::string pressedPlayerOneRightSpriteID = "plat-p1-right-pressed"_spr;
+
+static std::string unpressedPlayerTwoJumpSpriteID = "plat-p2-jump"_spr;
+static std::string unpressedPlayerTwoLeftSpriteID = "plat-p2-left"_spr;
+static std::string unpressedPlayerTwoRightSpriteID = "plat-p2-right"_spr;
+
+static std::string pressedPlayerTwoJumpSpriteID = "plat-p2-jump-pressed"_spr;
+static std::string pressedPlayerTwoLeftSpriteID = "plat-p2-left-pressed"_spr;
+static std::string pressedPlayerTwoRightSpriteID = "plat-p2-right-pressed"_spr;
+
 GLubyte platP1LeftOpacity = 0;
 GLubyte platP1RightOpacity = 0;
 GLubyte platP1JumpOpacity = 0;
@@ -125,42 +141,42 @@ void findAndAddTextures(const UILayer* uiLayer, const GJBaseGameLayer* gjbgl) {
 		const auto leftButton = typeinfo_cast<CCSprite*>(platP1Move->getChildren()->objectAtIndex(0));
 		if (!leftButton) return log::info("[NULLPTR] AT leftButton! just before checking lP1Valid");
 		platP1LeftOpacity = leftButton->getOpacity();
-		if (lP1Valid) addTexturesToButton(leftButton, p1LeftSprite, "plat-p1-left"_spr, is2P ? manager->disableTintingP1LeftTwoPlayer : manager->disableTintingP1Left);
-		if (lP1PressedValid) addTexturesToButton(leftButton, p1LeftPressedSprite, "plat-p1-left-pressed"_spr, is2P ? manager->disableTintingP1LeftTwoPlayer : manager->disableTintingP1Left);
+		if (lP1Valid) addTexturesToButton(leftButton, p1LeftSprite, unpressedPlayerOneLeftSpriteID, is2P ? manager->disableTintingP1LeftTwoPlayer : manager->disableTintingP1Left);
+		if (lP1PressedValid) addTexturesToButton(leftButton, p1LeftPressedSprite, pressedPlayerOneLeftSpriteID, is2P ? manager->disableTintingP1LeftTwoPlayer : manager->disableTintingP1Left);
 
 		const auto rightButton = typeinfo_cast<CCSprite*>(platP1Move->getChildren()->objectAtIndex(1));
 		if (!rightButton) return log::info("[NULLPTR] AT rightButton! just before checking rP1Valid");
 		platP1RightOpacity = rightButton->getOpacity();
-		if (rP1Valid) addTexturesToButton(rightButton, p1RightSprite, "plat-p1-right"_spr, is2P ? manager->disableTintingP1RightTwoPlayer : manager->disableTintingP1Right);
-		if (rP1PressedValid) addTexturesToButton(rightButton, p1RightPressedSprite, "plat-p1-right-pressed"_spr, is2P ? manager->disableTintingP1RightTwoPlayer : manager->disableTintingP1Right);
+		if (rP1Valid) addTexturesToButton(rightButton, p1RightSprite, unpressedPlayerOneRightSpriteID, is2P ? manager->disableTintingP1RightTwoPlayer : manager->disableTintingP1Right);
+		if (rP1PressedValid) addTexturesToButton(rightButton, p1RightPressedSprite, pressedPlayerOneRightSpriteID, is2P ? manager->disableTintingP1RightTwoPlayer : manager->disableTintingP1Right);
 	}
 	if (platP1Jump && platP1Jump->getChildrenCount() != 0) {
 		const auto jumpButton = typeinfo_cast<CCSprite*>(platP1Jump->getChildren()->objectAtIndex(0));
 		if (!jumpButton) return log::info("[NULLPTR] AT jumpButton! just before checking jP1Valid");
 		platP1JumpOpacity = jumpButton->getOpacity();
-		if (jP1Valid) addTexturesToButton(jumpButton, p1JumpSprite, "plat-p1-jump"_spr, is2P ? manager->disableTintingP1JumpTwoPlayer : manager->disableTintingP1Jump);
-		if (jP1PressedValid) addTexturesToButton(jumpButton, p1JumpPressedSprite, "plat-p1-jump-pressed"_spr, is2P ? manager->disableTintingP1JumpTwoPlayer : manager->disableTintingP1Jump);
+		if (jP1Valid) addTexturesToButton(jumpButton, p1JumpSprite, unpressedPlayerOneJumpSpriteID, is2P ? manager->disableTintingP1JumpTwoPlayer : manager->disableTintingP1Jump);
+		if (jP1PressedValid) addTexturesToButton(jumpButton, p1JumpPressedSprite, pressedPlayerOneJumpSpriteID, is2P ? manager->disableTintingP1JumpTwoPlayer : manager->disableTintingP1Jump);
 	}
 
 	if (platP2Move && platP2Move->getChildrenCount() > 1) {
 		const auto leftButton = typeinfo_cast<CCSprite*>(platP2Move->getChildren()->objectAtIndex(0));
 		if (!leftButton) return log::info("[NULLPTR] AT leftButton! just before checking lP2Valid");
 		platP2LeftOpacity = leftButton->getOpacity();
-		if (lP2Valid) addTexturesToButton(leftButton, p2LeftSprite, "plat-p2-left"_spr, is2P ? manager->disableTintingP2LeftTwoPlayer : manager->disableTintingP2Left);
-		if (lP2PressedValid) addTexturesToButton(leftButton, p2LeftPressedSprite, "plat-p2-left-pressed"_spr, is2P ? manager->disableTintingP2LeftTwoPlayer : manager->disableTintingP2Left);
+		if (lP2Valid) addTexturesToButton(leftButton, p2LeftSprite, unpressedPlayerTwoLeftSpriteID, is2P ? manager->disableTintingP2LeftTwoPlayer : manager->disableTintingP2Left);
+		if (lP2PressedValid) addTexturesToButton(leftButton, p2LeftPressedSprite, pressedPlayerTwoLeftSpriteID, is2P ? manager->disableTintingP2LeftTwoPlayer : manager->disableTintingP2Left);
 
 		const auto rightButton = typeinfo_cast<CCSprite*>(platP2Move->getChildren()->objectAtIndex(1));
 		if (!rightButton) return log::info("[NULLPTR] AT rightButton! just before checking rP2Valid");
 		platP2RightOpacity = rightButton->getOpacity();
-		if (rP2Valid) addTexturesToButton(rightButton, p2RightSprite, "plat-p2-right"_spr, is2P ? manager->disableTintingP2RightTwoPlayer : manager->disableTintingP2Right);
-		if (rP2PressedValid) addTexturesToButton(rightButton, p2RightPressedSprite, "plat-p2-right-pressed"_spr, is2P ? manager->disableTintingP2RightTwoPlayer : manager->disableTintingP2Right);
+		if (rP2Valid) addTexturesToButton(rightButton, p2RightSprite, unpressedPlayerTwoRightSpriteID, is2P ? manager->disableTintingP2RightTwoPlayer : manager->disableTintingP2Right);
+		if (rP2PressedValid) addTexturesToButton(rightButton, p2RightPressedSprite, pressedPlayerTwoRightSpriteID, is2P ? manager->disableTintingP2RightTwoPlayer : manager->disableTintingP2Right);
 	}
 	if (platP2Jump && platP2Jump->getChildrenCount() != 0) {
 		const auto jumpButton = typeinfo_cast<CCSprite*>(platP2Jump->getChildren()->objectAtIndex(0));
 		if (!jumpButton) return log::info("[NULLPTR] AT jumpButton! just before checking jP2Valid");
 		platP2JumpOpacity = jumpButton->getOpacity();
-		if (jP2Valid) addTexturesToButton(jumpButton, p2JumpSprite, "plat-p2-jump"_spr, is2P ? manager->disableTintingP2JumpTwoPlayer : manager->disableTintingP2Jump);
-		if (jP2PressedValid) addTexturesToButton(jumpButton, p2JumpPressedSprite, "plat-p2-jump-pressed"_spr, is2P ? manager->disableTintingP2JumpTwoPlayer : manager->disableTintingP2Jump);
+		if (jP2Valid) addTexturesToButton(jumpButton, p2JumpSprite, unpressedPlayerTwoJumpSpriteID, is2P ? manager->disableTintingP2JumpTwoPlayer : manager->disableTintingP2Jump);
+		if (jP2PressedValid) addTexturesToButton(jumpButton, p2JumpPressedSprite, pressedPlayerTwoJumpSpriteID, is2P ? manager->disableTintingP2JumpTwoPlayer : manager->disableTintingP2Jump);
 	}
 }
 
@@ -192,56 +208,30 @@ class $modify(MyUILayer, UILayer) {
 		}
 
 		if (touchEvent != GJUITouchEvent::Moved) log::info("————————————————————————————————————————————————————————————");
-		if (node == platP1Jump) {
-			if (touchEvent == GJUITouchEvent::Pressed && result) {
-				log::info("user pressed player one jump");
-				MyUILayer::setSpriteVisibility(node, "plat-p1-jump"_spr, "plat-p1-jump-pressed"_spr, false, platP1JumpOpacity);
-			} else if (touchEvent == GJUITouchEvent::Ended && result) {
-				log::info("user released player one jump");
-				MyUILayer::setSpriteVisibility(node, "plat-p1-jump"_spr, "plat-p1-jump-pressed"_spr, true, platP1JumpOpacity);
-			}
-		} else if (node == platP2Jump) {
-			if (touchEvent == GJUITouchEvent::Pressed && result) {
-				log::info("user pressed player two jump");
-				MyUILayer::setSpriteVisibility(node, "plat-p2-jump"_spr, "plat-p2-jump-pressed"_spr, false, platP2JumpOpacity);
-			} else if (touchEvent == GJUITouchEvent::Ended && result) {
-				log::info("user released player two jump");
-				MyUILayer::setSpriteVisibility(node, "plat-p2-jump"_spr, "plat-p2-jump-pressed"_spr, true, platP2JumpOpacity);
-			}
-		} else if (node == platP1Move) {
-			if (node->m_currentButton == PlayerButton::Left) {
-				log::info("user pressed player one move left.");
-				MyUILayer::setSpriteVisibility(node, "plat-p1-left"_spr, "plat-p1-left-pressed"_spr, false, platP1LeftOpacity);
-				MyUILayer::setSpriteVisibility(node, "plat-p1-right"_spr, "plat-p1-right-pressed"_spr, true, platP1RightOpacity);
-			} else if (node->m_currentButton == PlayerButton::Right) {
-				log::info("user pressed player one move right.");
-				MyUILayer::setSpriteVisibility(node, "plat-p1-left"_spr, "plat-p1-left-pressed"_spr, true, platP1LeftOpacity);
-				MyUILayer::setSpriteVisibility(node, "plat-p1-right"_spr, "plat-p1-right-pressed"_spr, false, platP1RightOpacity);
-			} else {
-				log::info("releasing player one move buttons");
-				MyUILayer::setSpriteVisibility(node, "plat-p1-left"_spr, "plat-p1-left-pressed"_spr, true, platP1LeftOpacity);
-				MyUILayer::setSpriteVisibility(node, "plat-p1-right"_spr, "plat-p1-right-pressed"_spr, true, platP1RightOpacity);
-			}
-		} else if (node == platP2Move) {
-			if (node->m_currentButton == PlayerButton::Left) {
-				log::info("user pressed player two move left.");
-				MyUILayer::setSpriteVisibility(node, "plat-p2-left"_spr, "plat-p2-left-pressed"_spr, false, platP2LeftOpacity);
-				MyUILayer::setSpriteVisibility(node, "plat-p2-right"_spr, "plat-p2-right-pressed"_spr, true, platP2RightOpacity);
-			} else if (node->m_currentButton == PlayerButton::Right) {
-				log::info("user pressed player two move right.");
-				MyUILayer::setSpriteVisibility(node, "plat-p2-left"_spr, "plat-p2-left-pressed"_spr, true, platP2LeftOpacity);
-				MyUILayer::setSpriteVisibility(node, "plat-p2-right"_spr, "plat-p2-right-pressed"_spr, false, platP2RightOpacity);
-			} else {
-				log::info("releasing player two move buttons");
-				MyUILayer::setSpriteVisibility(node, "plat-p2-left"_spr, "plat-p2-left-pressed"_spr, true, platP2LeftOpacity);
-				MyUILayer::setSpriteVisibility(node, "plat-p2-right"_spr, "plat-p2-right-pressed"_spr, true, platP2RightOpacity);
-			}
-		}
+		if (node == platP1Jump && result) {
+			if (touchEvent == GJUITouchEvent::Pressed) log::info("user pressed player one jump");
+			else if (touchEvent == GJUITouchEvent::Ended) log::info("user released player one jump");
+			MyUILayer::setSpriteVisibility(node, unpressedPlayerOneJumpSpriteID, pressedPlayerOneJumpSpriteID, touchEvent == GJUITouchEvent::Ended, platP1JumpOpacity);
+		} else if (node == platP2Jump && result) {
+			if (touchEvent == GJUITouchEvent::Pressed) log::info("user pressed player two jump");
+			else if (touchEvent == GJUITouchEvent::Ended) log::info("user released player two jump");
+			MyUILayer::setSpriteVisibility(node, unpressedPlayerTwoJumpSpriteID, pressedPlayerTwoJumpSpriteID, touchEvent == GJUITouchEvent::Ended, platP2JumpOpacity);
+		} else MyUILayer::manipulateSpriteVisibility(node);
 
 		return result;
 	}
 
-	static void setSpriteVisibility(CCNode* node, const std::string& mainSpriteID, const std::string& pressedSpriteID, const bool showMainSprite, const GLubyte originalOpacity) {
+	static void manipulateSpriteVisibility(GJUINode* node) {
+		const bool isLeft = node->m_currentButton == PlayerButton::Left;
+		const bool isRight = node->m_currentButton == PlayerButton::Right;
+		if (isLeft) log::info("user pressed player {} move left.", node->m_player2 ? "two" : "one");
+		else if (isRight) log::info("user pressed player {} move right.", node->m_player2 ? "two" : "one");
+		else log::info("releasing player {} move buttons", node->m_player2 ? "two" : "one");
+		MyUILayer::setSpriteVisibility(node, node->m_player2 ? unpressedPlayerTwoLeftSpriteID : unpressedPlayerOneLeftSpriteID, node->m_player2 ? pressedPlayerTwoLeftSpriteID : pressedPlayerOneLeftSpriteID, !isLeft, platP2LeftOpacity);
+		MyUILayer::setSpriteVisibility(node, node->m_player2 ? unpressedPlayerTwoRightSpriteID : unpressedPlayerOneRightSpriteID, node->m_player2 ? pressedPlayerTwoRightSpriteID : pressedPlayerOneRightSpriteID, !isRight, platP2RightOpacity);
+	}
+
+	static void setSpriteVisibility(GJUINode* node, const std::string& mainSpriteID, const std::string& pressedSpriteID, const bool showMainSprite, const GLubyte originalOpacity) {
 		CCNode* mainSprite = node->getChildByIDRecursive(mainSpriteID);
 		CCNode* presSprite = node->getChildByIDRecursive(pressedSpriteID);
 		log::info("showMainSprite: {}", showMainSprite);
