@@ -185,9 +185,13 @@ class $modify(MyUILayer, UILayer) {
 	void togglePlatformerMode(bool platformer) {
 		UILayer::togglePlatformerMode(platformer);
 		if (!m_uiNodes || !m_gameLayer || !m_gameLayer->m_level || !m_gameLayer->m_level->isPlatformer()) return;
+	#else
+	void resetUINodeState() {
+		UILayer::resetUINodeState();
+	#endif
+		if (!m_uiNodes || !m_gameLayer || !m_gameLayer->m_level || !m_gameLayer->m_level->isPlatformer()) return;
 		findAndAddTextures(this, m_gameLayer);
 	}
-	#endif
 
 	bool processUINodeTouch(GJUITouchEvent touchEvent, int p1, cocos2d::CCPoint point, GJUINode* node) {
 		const bool result = UILayer::processUINodeTouch(touchEvent, p1, point, node);
