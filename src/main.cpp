@@ -261,7 +261,7 @@ class $modify(MyPlayLayer, PlayLayer) {
 		PlayLayer::resume();
 		if (!m_uiLayer || !m_uiLayer->m_uiNodes) return;
 
-		Manager* manager = Manager::getSharedInstance();
+		const Manager* manager = Manager::getSharedInstance();
 		if (!manager->enabled) return;
 
 		const auto platP1Move = manager->hasNodeIDs ? m_uiLayer->getChildByID("platformer-p1-move-button") : typeinfo_cast<GJUINode*>(m_uiLayer->m_uiNodes->objectAtIndex(0));
