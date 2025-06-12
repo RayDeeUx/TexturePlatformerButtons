@@ -179,10 +179,10 @@ class $modify(MyUILayer, UILayer) {
 		if (!is2P && !manager->textureP1JumpWhenPressed && !manager->textureP2JumpWhenPressed && !manager->textureP1LeftWhenPressed && !manager->textureP2LeftWhenPressed && !manager->textureP1RightWhenPressed && !manager->textureP2RightWhenPressed) return result;
 		if (is2P && !manager->textureP1JumpWhenPressedTwoPlayer && !manager->textureP2JumpWhenPressedTwoPlayer && !manager->textureP1LeftWhenPressedTwoPlayer && !manager->textureP2LeftWhenPressedTwoPlayer && !manager->textureP1RightWhenPressedTwoPlayer && !manager->textureP2RightWhenPressedTwoPlayer) return result;
 
-		const auto platP1Move = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(0));
-		const auto platP2Move = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(1));
-		const auto platP1Jump = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(2));
-		const auto platP2Jump = typeinfo_cast<CCNode*>(m_uiNodes->objectAtIndex(3));
+		const auto platP1Move = manager->hasNodeIDs ? this->getChildByID("platformer-p1-move-button") : typeinfo_cast<GJUINode*>(m_uiNodes->objectAtIndex(0));
+		const auto platP2Move = manager->hasNodeIDs ? this->getChildByID("platformer-p2-move-button") : typeinfo_cast<GJUINode*>(m_uiNodes->objectAtIndex(1));
+		const auto platP1Jump = manager->hasNodeIDs ? this->getChildByID("platformer-p1-jump-button") : typeinfo_cast<GJUINode*>(m_uiNodes->objectAtIndex(2));
+		const auto platP2Jump = manager->hasNodeIDs ? this->getChildByID("platformer-p2-jump-button") : typeinfo_cast<GJUINode*>(m_uiNodes->objectAtIndex(3));
 
 		if (!platP1Move || !platP2Move || !platP1Jump || !platP2Jump) {
 			log::info("something was a nullptr! !platP1Move: {} | !platP2Move: {} | !platP1Jump: {} | !platP2Jump: {}", !platP1Move, !platP2Move, !platP1Jump, !platP2Jump);
@@ -246,5 +246,72 @@ class $modify(MyUILayer, UILayer) {
 			presSprite->setVisible(!showMainSprite);
 			if (const auto originalSprite = typeinfo_cast<CCSprite*>(presSprite->getParent()); originalSprite && !mainSprite) originalSprite->setOpacity(showMainSprite ? originalOpacity : 0);
 		}
+	}
+};
+
+/*
+honestly it's pretty sad to see that i had to hook
+PlayLayer::resume() at all to clean up the mess that
+robtop left behind. this shouldn't even be necessary,
+but it was what worked for two of my three android
+testers to stop the original sprites from revealing
+themselves during game pause. pretty stupid but oh well
+-- raydeeux
+*/
+class $modify(MyPlayLayer, PlayLayer) {
+	void resume() {
+		PlayLayer::resume();
+		if (!m_uiLayer || !m_uiLayer->m_uiNodes) return;
+
+		Manager* manager = Manager::getSharedInstance();
+		if (!manager->enabled) return;
+
+		const auto platP1Move = manager->hasNodeIDs ? m_uiLayer->getChildByID("platformer-p1-move-button") : typeinfo_cast<GJUINode*>(m_uiLayer->m_uiNodes->objectAtIndex(0));
+		const auto platP2Move = manager->hasNodeIDs ? m_uiLayer->getChildByID("platformer-p2-move-button") : typeinfo_cast<GJUINode*>(m_uiLayer->m_uiNodes->objectAtIndex(1));
+		const auto platP1Jump = manager->hasNodeIDs ? m_uiLayer->getChildByID("platformer-p1-jump-button") : typeinfo_cast<GJUINode*>(m_uiLayer->m_uiNodes->objectAtIndex(2));
+		const auto platP2Jump = manager->hasNodeIDs ? m_uiLayer->getChildByID("platformer-p2-jump-button") : typeinfo_cast<GJUINode*>(m_uiLayer->m_uiNodes->objectAtIndex(3));
+
+		if (platP1Move && platP1Move->getChildrenCount() > 1) {
+			const auto leftButton = typeinfo_cast<CCSprite*>(platP1Move->getChildren()->objectAtIndex(0));
+			if (!leftButton) return log::info("[NULLPTR] AT leftButton! on PlayLayer::resume()");
+			if (leftButton->getChildByTag(6012025)) leftButton->setOpacity(0);
+
+			const auto rightButton = typeinfo_cast<CCSprite*>(platP1Move->getChildren()->objectAtIndex(1));
+			if (!rightButton) return log::info("[NULLPTR] AT rightButton! on PlayLayer::resume()");
+			if (rightButton->getChildByTag(6012025)) rightButton->setOpacity(0);
+		}
+		if (platP1Jump && platP1Jump->getChildrenCount() != 0) {
+			const auto jumpButton = typeinfo_cast<CCSprite*>(platP1Jump->getChildren()->objectAtIndex(0));
+			if (!jumpButton) return log::info("[NULLPTR] AT jumpButton! on PlayLayer::resume()");
+			if (jumpButton->getChildByTag(6012025)) jumpButton->setOpacity(0);
+		}
+
+		if (platP2Move && platP2Move->getChildrenCount() > 1) {
+			const auto leftButton = typeinfo_cast<CCSprite*>(platP2Move->getChildren()->objectAtIndex(0));
+			if (!leftButton) return log::info("[NULLPTR] AT leftButton! on PlayLayer::resume()");
+			if (leftButton->getChildByTag(6012025)) leftButton->setOpacity(0);
+
+			const auto rightButton = typeinfo_cast<CCSprite*>(platP2Move->getChildren()->objectAtIndex(1));
+			if (!rightButton) return log::info("[NULLPTR] AT rightButton! on PlayLayer::resume()");
+			if (rightButton->getChildByTag(6012025)) rightButton->setOpacity(0);
+		}
+		if (platP2Jump && platP2Jump->getChildrenCount() != 0) {
+			const auto jumpButton = typeinfo_cast<CCSprite*>(platP2Jump->getChildren()->objectAtIndex(0));
+			if (!jumpButton) return log::info("[NULLPTR] AT jumpButton! on PlayLayer::resume()");
+			if (jumpButton->getChildByTag(6012025)) jumpButton->setOpacity(0);
+		}
+	}
+};
+
+class $modify(MyMenuLayer, MenuLayer) {
+	bool init() {
+		if (!MenuLayer::init()) return false;
+
+		Manager* manager = Manager::getSharedInstance();
+		if (manager->calledAlready) return true;
+
+		manager->hasNodeIDs = Utils::isModLoaded("geode.node-ids");
+
+		return true;
 	}
 };
