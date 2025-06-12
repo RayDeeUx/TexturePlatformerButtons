@@ -46,8 +46,12 @@ GLubyte platP2JumpOpacity = 0;
 
 static void addTexturesToButton(CCSprite* originalSprite, CCSprite* replacementSprite, const std::string& nodeID, const bool disableTinting) {
 	if (!originalSprite || !replacementSprite) return log::info("[NULLPTR]: !originalSprite: {} | !replacementSprite: {}", !originalSprite, !replacementSprite);
+	if (originalSprite->getChildByID(nodeID)) return log::info("[EARLY RETURN]: sprite ID {} was already added", nodeID);
 
 	const bool isPressedSprite = utils::string::contains(nodeID, "-pressed");
+	const int chosenTag = isPressedSprite ? 6022025 : 6012025;
+	if (originalSprite->getChildByTag(chosenTag)) return log::info("[EARLY RETURN]: tag {} was already added for potential sprite {}", chosenTag, nodeID);
+
 	std::string userObjectID = isPressedSprite ? "pressed-added"_spr : "unpressed-added"_spr;
 	if (originalSprite->getUserObject(userObjectID)) return log::info("[EARLY RETURN]: {} was already added for potential sprite {}", userObjectID, nodeID);
 
@@ -63,9 +67,9 @@ static void addTexturesToButton(CCSprite* originalSprite, CCSprite* replacementS
 	originalSprite->addChild(replacementSprite);
 	originalSprite->setUserObject(userObjectID, CCBool::create(true));
 
-	replacementSprite->setTag(isPressedSprite ? 6022025 : 6012025);
 	replacementSprite->setScale(std::min(xRatio, yRatio));
 	replacementSprite->setPosition(originalSize / 2.f);
+	replacementSprite->setTag(chosenTag);
 	replacementSprite->setID(nodeID);
 
 	if (!isPressedSprite) return;
