@@ -212,8 +212,10 @@ class $modify(MyUILayer, UILayer) {
 			if (node->m_currentButton == PlayerButton::Left) {
 				log::info("user pressed player one move left.");
 				MyUILayer::setSpriteVisibility(node, "plat-p1-left"_spr, "plat-p1-left-pressed"_spr, false, platP1LeftOpacity);
+				MyUILayer::setSpriteVisibility(node, "plat-p1-right"_spr, "plat-p1-right-pressed"_spr, true, platP1RightOpacity);
 			} else if (node->m_currentButton == PlayerButton::Right) {
 				log::info("user pressed player one move right.");
+				MyUILayer::setSpriteVisibility(node, "plat-p1-left"_spr, "plat-p1-left-pressed"_spr, true, platP1LeftOpacity);
 				MyUILayer::setSpriteVisibility(node, "plat-p1-right"_spr, "plat-p1-right-pressed"_spr, false, platP1RightOpacity);
 			} else {
 				log::info("releasing player one move buttons");
@@ -224,8 +226,10 @@ class $modify(MyUILayer, UILayer) {
 			if (node->m_currentButton == PlayerButton::Left) {
 				log::info("user pressed player two move left.");
 				MyUILayer::setSpriteVisibility(node, "plat-p2-left"_spr, "plat-p2-left-pressed"_spr, false, platP2LeftOpacity);
+				MyUILayer::setSpriteVisibility(node, "plat-p2-right"_spr, "plat-p2-right-pressed"_spr, true, platP2RightOpacity);
 			} else if (node->m_currentButton == PlayerButton::Right) {
 				log::info("user pressed player two move right.");
+				MyUILayer::setSpriteVisibility(node, "plat-p2-left"_spr, "plat-p2-left-pressed"_spr, true, platP2LeftOpacity);
 				MyUILayer::setSpriteVisibility(node, "plat-p2-right"_spr, "plat-p2-right-pressed"_spr, false, platP2RightOpacity);
 			} else {
 				log::info("releasing player two move buttons");
