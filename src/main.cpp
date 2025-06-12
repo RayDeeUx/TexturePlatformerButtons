@@ -16,7 +16,7 @@ $on_mod(Loaded) {
 I have zero faith in you to name your image files while following a specific format, and covering every imaginable combination and permutation of the words "player", "1"/"one"/"2"/"two", "left"/"jump"/"right", and "main"/"pressed" is beyond what this mod was designed to do.
 However, setting the textures of six different buttons (twelve if you want custom textures when the button is pressed) gets real tedious real fast.
 Feel free to use this mod's config directory to make your own sets of custom platformer button texture presets.
-Go ahead, I won't stop you.
+Go ahead, I won't mind.
 --RayDeeUx)";
 	if (const auto result = utils::file::writeString(readme, content); result.isErr()) log::error("Error writing to README.txt");
 }
@@ -181,11 +181,13 @@ void findAndAddTextures(const UILayer* uiLayer, const GJBaseGameLayer* gjbgl) {
 }
 
 class $modify(MyUILayer, UILayer) {
+	#ifndef GEODE_IS_WINDOWS
 	void togglePlatformerMode(bool platformer) {
 		UILayer::togglePlatformerMode(platformer);
 		if (!m_uiNodes || !m_gameLayer || !m_gameLayer->m_level || !m_gameLayer->m_level->isPlatformer()) return;
 		findAndAddTextures(this, m_gameLayer);
 	}
+	#endif
 
 	bool processUINodeTouch(GJUITouchEvent touchEvent, int p1, cocos2d::CCPoint point, GJUINode* node) {
 		const bool result = UILayer::processUINodeTouch(touchEvent, p1, point, node);
