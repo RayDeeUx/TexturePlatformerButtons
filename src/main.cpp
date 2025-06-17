@@ -83,6 +83,12 @@ void findAndAddTextures(UILayer* uiLayer, const GJBaseGameLayer* gjbgl) {
 	if (!manager->enabled) return;
 
 	log::info("initalizing sprites !!!");
+	CCSprite* p1JumpSprite = nullptr;
+	CCSprite* p1LeftSprite = nullptr;
+	CCSprite* p1RightSprite = nullptr;
+	CCSprite* p2JumpSprite = nullptr;
+	CCSprite* p2LeftSprite = nullptr;
+	CCSprite* p2RightSprite = nullptr;
 	CCSprite* p1JumpPressedSprite = nullptr;
 	CCSprite* p2JumpPressedSprite = nullptr;
 	CCSprite* p1LeftPressedSprite = nullptr;
@@ -92,14 +98,20 @@ void findAndAddTextures(UILayer* uiLayer, const GJBaseGameLayer* gjbgl) {
 
 	const bool is2P = gjbgl->m_level->m_twoPlayerMode;
 
-	CCSprite* p1JumpSprite = CCSprite::create(is2P ? manager->jumpMainTextureP1TwoPlayer.c_str() : manager->jumpMainTextureP1.c_str());
-	if (is2P ? manager->textureP1JumpWhenPressedTwoPlayer : manager->textureP1JumpWhenPressed) p1JumpPressedSprite = CCSprite::create(is2P ? manager->jumpPressedTextureP1TwoPlayer.c_str() : manager->jumpPressedTextureP1.c_str());
+	const std::string& jumpMainTextureP1ChosenString = is2P ? manager->jumpMainTextureP1TwoPlayer : manager->jumpMainTextureP1;
+	if (!jumpMainTextureP1ChosenString.empty()) p1JumpSprite = CCSprite::create(jumpMainTextureP1ChosenSprite.c_str());
+	const std::string& jumpPressedTextureP1ChosenString = is2P ? manager->jumpPressedTextureP1TwoPlayer : manager->jumpPressedTextureP1;
+	if (is2P ? manager->textureP1JumpWhenPressedTwoPlayer : manager->textureP1JumpWhenPressed && !jumpPressedTextureP1ChosenString.empty()) p1JumpPressedSprite = CCSprite::create(jumpPressedTextureP1ChosenSprite.c_str());
 
-	CCSprite* p1LeftSprite = CCSprite::create(is2P ? manager->leftMainTextureP1TwoPlayer.c_str() : manager->leftMainTextureP1.c_str());
-	if (is2P ? manager->textureP1LeftWhenPressedTwoPlayer : manager->textureP1LeftWhenPressed) p1LeftPressedSprite = CCSprite::create(is2P ? manager->leftPressedTextureP1TwoPlayer.c_str() : manager->leftPressedTextureP1.c_str());
+	const std::string& leftMainTextureP1ChosenString = is2P ? manager->leftMainTextureP1TwoPlayer : manager->leftMainTextureP1;
+	if (!leftMainTextureP1ChosenString.empty()) p1LeftSprite = CCSprite::create(leftMainTextureP1ChosenSprite.c_str());
+	const std::string& leftPressedTextureP1ChosenString = is2P ? manager->leftPressedTextureP1TwoPlayer : manager->leftPressedTextureP1;
+	if (is2P ? manager->textureP1LeftWhenPressedTwoPlayer : manager->textureP1LeftWhenPressed && !leftPressedTextureP1ChosenString.empty()) p1LeftPressedSprite = CCSprite::create(leftPressedTextureP1ChosenSprite.c_str());
 
-	CCSprite* p1RightSprite = CCSprite::create(is2P ? manager->rightMainTextureP1TwoPlayer.c_str() : manager->rightMainTextureP1.c_str());
-	if (is2P ? manager->textureP1RightWhenPressedTwoPlayer : manager->textureP1RightWhenPressed) p1RightPressedSprite = CCSprite::create(is2P ? manager->rightPressedTextureP1TwoPlayer.c_str() : manager->rightPressedTextureP1.c_str());
+	const std::string& rightMainTextureP1ChosenString = is2P ? manager->rightMainTextureP1TwoPlayer : manager->rightMainTextureP1;
+	if (!rightMainTextureP1ChosenString.empty()) p1RightSprite = CCSprite::create(rightMainTextureP1ChosenSprite.c_str());
+	const std::string& rightPressedTextureP1ChosenString = is2P ? manager->rightPressedTextureP1TwoPlayer : manager->rightPressedTextureP1;
+	if (is2P ? manager->textureP1RightWhenPressedTwoPlayer : manager->textureP1RightWhenPressed && !rightPressedTextureP1ChosenString.empty()) p1RightPressedSprite = CCSprite::create(rightPressedTextureP1ChosenSprite.c_str());
 
 	const bool jP1Valid = p1JumpSprite && !p1JumpSprite->getUserObject("geode.texture-loader/fallback");
 	const bool lP1Valid = p1LeftSprite && !p1LeftSprite->getUserObject("geode.texture-loader/fallback");
@@ -109,14 +121,20 @@ void findAndAddTextures(UILayer* uiLayer, const GJBaseGameLayer* gjbgl) {
 	const bool lP1PressedValid = p1LeftPressedSprite && !p1LeftPressedSprite->getUserObject("geode.texture-loader/fallback");
 	const bool rP1PressedValid = p1RightPressedSprite && !p1RightPressedSprite->getUserObject("geode.texture-loader/fallback");
 
-	CCSprite* p2JumpSprite = CCSprite::create(is2P ? manager->jumpMainTextureP2TwoPlayer.c_str() : manager->jumpMainTextureP2.c_str());
-	if (is2P ? manager->textureP2JumpWhenPressedTwoPlayer : manager->textureP2JumpWhenPressed) p2JumpPressedSprite = CCSprite::create(is2P ? manager->jumpPressedTextureP2TwoPlayer.c_str() : manager->jumpPressedTextureP2.c_str());
+	const std::string& jumpMainTextureP2ChosenString = is2P ? manager->jumpMainTextureP2TwoPlayer : manager->jumpMainTextureP2;
+	if (!jumpMainTextureP2ChosenString.empty()) p2JumpSprite = CCSprite::create(jumpMainTextureP2ChosenSprite.c_str());
+	const std::string& jumpPressedTextureP2ChosenString = is2P ? manager->jumpPressedTextureP2TwoPlayer : manager->jumpPressedTextureP2;
+	if (is2P ? manager->textureP2JumpWhenPressedTwoPlayer : manager->textureP2JumpWhenPressed && !jumpPressedTextureP2ChosenString.empty()) p2JumpPressedSprite = CCSprite::create(jumpPressedTextureP2ChosenSprite.c_str());
 
-	CCSprite* p2LeftSprite = CCSprite::create(is2P ? manager->leftMainTextureP2TwoPlayer.c_str() : manager->leftMainTextureP2.c_str());
-	if (is2P ? manager->textureP2LeftWhenPressedTwoPlayer : manager->textureP2LeftWhenPressed) p2LeftPressedSprite = CCSprite::create(is2P ? manager->leftPressedTextureP2TwoPlayer.c_str() : manager->leftPressedTextureP2.c_str());
+	const std::string& leftMainTextureP2ChosenString = is2P ? manager->leftMainTextureP2TwoPlayer : manager->leftMainTextureP2;
+	if (!leftMainTextureP2ChosenString.empty()) p2LeftSprite = CCSprite::create(leftMainTextureP2ChosenSprite.c_str());
+	const std::string& leftPressedTextureP2ChosenString = is2P ? manager->leftPressedTextureP2TwoPlayer : manager->leftPressedTextureP2;
+	if (is2P ? manager->textureP2LeftWhenPressedTwoPlayer : manager->textureP2LeftWhenPressed && !leftPressedTextureP2ChosenString.empty()) p2LeftPressedSprite = CCSprite::create(leftPressedTextureP2ChosenSprite.c_str());
 
-	CCSprite* p2RightSprite = CCSprite::create(is2P ? manager->rightMainTextureP2TwoPlayer.c_str() : manager->rightMainTextureP2.c_str());
-	if (is2P ? manager->textureP2RightWhenPressedTwoPlayer : manager->textureP2RightWhenPressed) p2RightPressedSprite = CCSprite::create(is2P ? manager->rightPressedTextureP2TwoPlayer.c_str() : manager->rightPressedTextureP2.c_str());
+	const std::string& rightMainTextureP2ChosenString = is2P ? manager->rightMainTextureP2TwoPlayer : manager->rightMainTextureP2;
+	if (!rightMainTextureP2ChosenString.empty()) p2RightSprite = CCSprite::create(rightMainTextureP2ChosenSprite.c_str());
+	const std::string& rightPressedTextureP2ChosenString = is2P ? manager->rightPressedTextureP2TwoPlayer : manager->rightPressedTextureP2;
+	if (is2P ? manager->textureP2RightWhenPressedTwoPlayer : manager->textureP2RightWhenPressed && !rightPressedTextureP2ChosenString.empty()) p2RightPressedSprite = CCSprite::create(rightPressedTextureP2ChosenSprite.c_str());
 
 	const bool jP2Valid = p2JumpSprite && !p2JumpSprite->getUserObject("geode.texture-loader/fallback");
 	const bool lP2Valid = p2LeftSprite && !p2LeftSprite->getUserObject("geode.texture-loader/fallback");
