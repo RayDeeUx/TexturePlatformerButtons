@@ -78,6 +78,22 @@ static void addTexturesToButton(CCSprite* originalSprite, CCSprite* replacementS
 	if (!originalSprite->getChildByTag(6012025)) originalSprite->setOpacity(originalOpacity);
 }
 
+static void originalTextureVisibilityJump(CCNode* jumpNode) {
+	if (!jumpNode || jumpNode->getChildrenCount() < 1) return;
+	if (const auto jumpButton = typeinfo_cast<CCSprite*>(jumpNode->getChildren()->objectAtIndex(0)); jumpButton && jumpButton->getChildByTag(6012025)) return jumpButton->setOpacity(0);
+	log::info("[NULLPTR] AT {}'s jumpButton! on PlayLayer::resume() [originalTextureVisibilityJump]", jumpNode->getID());
+}
+
+static void originalTextureVisibilityMove(CCNode* moveNode) {
+	if (!moveNode || moveNode->getChildrenCount() < 1) return;
+
+	if (const auto leftButton = typeinfo_cast<CCSprite*>(moveNode->getChildren()->objectAtIndex(0)); leftButton && leftButton->getChildByTag(6012025)) leftButton->setOpacity(0);
+	else log::info("[NULLPTR] AT {}'s leftButton! on PlayLayer::resume()", moveNode->getID());
+
+	if (const auto rightButton = typeinfo_cast<CCSprite*>(moveNode->getChildren()->objectAtIndex(1)); rightButton && rightButton->getChildByTag(6012025)) rightButton->setOpacity(0);
+	else log::info("[NULLPTR] AT {}'s rightButton! on PlayLayer::resume()", moveNode->getID());
+}
+
 static void findAndAddTextures(UILayer* uiLayer, const GJBaseGameLayer* gjbgl) {
 	const Manager* manager = Manager::getSharedInstance();
 	if (!manager->enabled) return;
@@ -207,21 +223,6 @@ static void findAndAddTextures(UILayer* uiLayer, const GJBaseGameLayer* gjbgl) {
 		if (jP2PressedValid) addTexturesToButton(jumpButton, p2JumpPressedSprite, pressedPlayerTwoJumpSpriteID, is2P ? manager->disableTintingP2JumpTwoPlayer : manager->disableTintingP2Jump);
 		originalTextureVisibilityJump(platP2Jump);
 	}
-}
-
-static void originalTextureVisibilityJump(CCNode* jumpNode) {
-	if (!jumpNode || jumpNode->getChildrenCount() < 1) return;
-	if (const auto jumpButton = typeinfo_cast<CCSprite*>(jumpNode->getChildren()->objectAtIndex(0)); jumpButton && jumpButton->getChildByTag(6012025)) return jumpButton->setOpacity(0);
-	log::info("[NULLPTR] AT {}'s jumpButton! on PlayLayer::resume() [originalTextureVisibilityJump]", jumpNode->getID());
-}
-static void originalTextureVisibilityMove(CCNode* moveNode) {
-	if (!moveNode || moveNode->getChildrenCount() < 1) return;
-
-	if (const auto leftButton = typeinfo_cast<CCSprite*>(moveNode->getChildren()->objectAtIndex(0)); leftButton && leftButton->getChildByTag(6012025)) leftButton->setOpacity(0);
-	else log::info("[NULLPTR] AT {}'s leftButton! on PlayLayer::resume()", moveNode->getID());
-
-	if (const auto rightButton = typeinfo_cast<CCSprite*>(moveNode->getChildren()->objectAtIndex(1)); rightButton && rightButton->getChildByTag(6012025)) rightButton->setOpacity(0);
-	else log::info("[NULLPTR] AT {}'s rightButton! on PlayLayer::resume()", moveNode->getID());
 }
 
 class $modify(MyUILayer, UILayer) {
